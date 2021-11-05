@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+  <exclude-pattern>*/.git/*</exclude-pattern>
+
+  <!-- Don't scan these core directories when installed in a site setup: -->
+  <exclude-pattern>./mu-plugins/*</exclude-pattern>
+  <exclude-pattern>./private/*</exclude-pattern>
+  <exclude-pattern>./upgrade/*</exclude-pattern>
+  <exclude-pattern>./uploads/*</exclude-pattern>
+  <!-- Should only be used for non-custom built plugins, so don't scan: -->
+  <exclude-pattern>./plugins/*</exclude-pattern>
+
+  <!-- Don't need to scan test directories -->
+  <exclude-pattern>*/tests/*</exclude-pattern>
+  <exclude-pattern>*/cypress/*</exclude-pattern>
+
+  <!-- Avoid sniffing of these files types: -->
+  <exclude-pattern>*\.(css|js)</exclude-pattern>
+
+  <!-- Package directories -->
+  <exclude-pattern>node_modules/*</exclude-pattern>
+  <exclude-pattern>vendor/*</exclude-pattern>
+  <!-- Local files -->
+  <exclude-pattern>./vip-config/env-local-config.php</exclude-pattern>
+
+  <!-- Scan only PHP files -->
+  <arg name="extensions" value="php"/>
+
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="75"/>
+
+  <!-- Include all of WP rulesets -->
+  <rule ref="WordPress">
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+    <exclude name="Squiz.Commenting.FileComment" />
+    <exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+  </rule>
+  <rule ref="WordPress-VIP-Go" />
+
+  <!-- Ensure we're consistant with shorthand array syntax. -->
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+  <!-- Warn when there's todo/fixme notations -->
+  <rule ref="Generic.Commenting.Todo" />
+  <rule ref="Generic.Commenting.Fixme" />
+  <!-- See: McCabes Cyclomatic Complexity -->
+  <rule ref="Generic.Metrics.CyclomaticComplexity" />
+  <!-- Warn if lines exceed 80 characters in length. -->
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+        <property name="lineLimit" value="120" />
+        <property name="absoluteLineLimit" value="0" />
+        <property name="ignoreComments" value="true" />
+    </properties>
+  </rule>
+  <!-- Limit nesting levels to 5. -->
+  <rule ref="Generic.Metrics.NestingLevel" />
+  <!-- Ensure no space after spread operator. -->
+  <rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter" />
+
+  <!-- Ensures spaces are added before parens open/close. -->
+  <rule ref="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
+  <rule ref="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
+  <!-- Ensure default values are assigned in functions/methods. -->
+  <rule ref="PEAR.Functions.ValidDefaultValue" />
+  <!-- Ensure multi-line objects/method-chains are indented. -->
+  <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent" />
+  <!-- Ensure indentation of keywords in switch statements. -->
+  <rule ref="PEAR.WhiteSpace.ScopeClosingBrace" />
+
+  <!-- Ensure USE blocks are declared correctly. -->
+  <rule ref="PSR2.Namespaces.UseDeclaration" />
+
+  <!-- Ensure inbuilt PHP functions are lowercase. -->
+  <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+  <!-- Don't allow usage of $this in static methods. -->
+  <rule ref="Squiz.Scope.StaticThisUsage"/>
+  <!-- Don't allow usage of $this in static methods. -->
+  <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+  <!-- Ensure closing braces are aligned correctly. -->
+  <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+</ruleset>
