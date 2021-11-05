@@ -1,5 +1,16 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Big Bite PHPCS Config" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+  <config name="encoding" value="utf-8" />
+  <config name="testVersion" value="7.4-" />
+
+  <arg name="basepath" value="."/>
+  <arg name="extensions" value="php" />
+  <arg name="parallel" value="75"/>
+  <arg name="report" value="full" />
+  <arg name="report-width" value="192" />
+  <arg name="tab-width" value="4" />
+  <arg value="qs" />
+
   <exclude-pattern>*/.git/*</exclude-pattern>
 
   <!-- Don't scan these core directories when installed in a site setup: -->
@@ -22,12 +33,6 @@
   <exclude-pattern>vendor/*</exclude-pattern>
   <!-- Local files -->
   <exclude-pattern>./vip-config/env-local-config.php</exclude-pattern>
-
-  <!-- Scan only PHP files -->
-  <arg name="extensions" value="php"/>
-
-  <arg name="basepath" value="."/>
-  <arg name="parallel" value="75"/>
 
   <!-- Include all of WP rulesets -->
   <rule ref="WordPress">
