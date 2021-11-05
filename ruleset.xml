@@ -12,27 +12,27 @@
   <arg value="qs" />
 
   <exclude-pattern>*/.git/*</exclude-pattern>
-
-  <!-- Don't scan these core directories when installed in a site setup: -->
-  <exclude-pattern>./mu-plugins/*</exclude-pattern>
-  <exclude-pattern>./private/*</exclude-pattern>
-  <exclude-pattern>./upgrade/*</exclude-pattern>
-  <exclude-pattern>./uploads/*</exclude-pattern>
-  <!-- Should only be used for non-custom built plugins, so don't scan: -->
-  <exclude-pattern>./plugins/*</exclude-pattern>
-
-  <!-- Don't need to scan test directories -->
+  <!-- WordPress site directories/files. -->
+  <exclude-pattern>*/index.php</exclude-pattern>
+  <exclude-pattern>*/mu-plugins/*</exclude-pattern>
+  <exclude-pattern>*/private/*</exclude-pattern>
+  <exclude-pattern>*/upgrade/*</exclude-pattern>
+  <exclude-pattern>*/uploads/*</exclude-pattern>
+  <exclude-pattern>*/wp-*.php</exclude-pattern>
+  <exclude-pattern>*/wp-admin/*</exclude-pattern>
+  <exclude-pattern>*/wp-content/advanced-cache.php</exclude-pattern>
+  <exclude-pattern>*/wp-content/db.php</exclude-pattern>
+  <exclude-pattern>*/wp-content/object-cache.php</exclude-pattern>
+  <exclude-pattern>*/wp-includes/*</exclude-pattern>
+  <exclude-pattern>xmlrpc.php</exclude-pattern>
+  <!-- Test directories. -->
   <exclude-pattern>*/tests/*</exclude-pattern>
   <exclude-pattern>*/cypress/*</exclude-pattern>
-
-  <!-- Avoid sniffing of these files types: -->
-  <exclude-pattern>*\.(css|js)</exclude-pattern>
-
-  <!-- Package directories -->
-  <exclude-pattern>node_modules/*</exclude-pattern>
-  <exclude-pattern>vendor/*</exclude-pattern>
-  <!-- Local files -->
-  <exclude-pattern>./vip-config/env-local-config.php</exclude-pattern>
+  <!-- Package directories. -->
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <!-- Local files. -->
+  <exclude-pattern>*/vip-config/env-local-config.php</exclude-pattern>
 
   <!-- Include all of WP rulesets -->
   <rule ref="WordPress">
