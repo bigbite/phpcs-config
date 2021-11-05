@@ -3,11 +3,11 @@
   <config name="encoding" value="utf-8" />
   <config name="testVersion" value="7.4-" />
 
-  <arg name="basepath" value="."/>
+  <arg name="basepath" value="." />
   <arg name="extensions" value="php" />
-  <arg name="parallel" value="75"/>
+  <arg name="parallel" value="75" />
   <arg name="report" value="full" />
-  <arg name="report-width" value="192" />
+  <arg name="report-width" value="150" />
   <arg name="tab-width" value="4" />
   <arg value="qs" />
 
