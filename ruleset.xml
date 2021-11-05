@@ -88,11 +88,11 @@
   <!-- Enforce wp-style spaces between parens. -->
   <rule ref="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
   <rule ref="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
-  <!-- Function args that contain default values should appear after those that don't -->
+  <!-- Ensure default values are assigned in functions/methods. -->
   <rule ref="PEAR.Functions.ValidDefaultValue" />
-  <!-- Enforce indentation of object operators (->) when they're newlined. -->
+  <!-- Ensure multi-line objects/method-chains are indented. -->
   <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent" />
-  <!-- Check alignment of closing braces. -->
+  <!-- Check that the closing braces of scopes are aligned correctly. -->
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace" />
 
   <!-- Force debug output function calls to error. -->
@@ -103,13 +103,13 @@
   </rule>
   <!-- Disallow nested functions (except within closures). -->
   <rule ref="Squiz.PHP.InnerFunctions" />
-  <!-- Prevent weird capitalisation of inbuilt php functions. -->
+  <!-- Ensure inbuilt PHP functions are lowercase. -->
   <rule ref="Squiz.PHP.LowercasePHPFunctions" />
   <!-- Ensure class properties have scoping operators (public/protected/private). -->
   <rule ref="Squiz.Scope.MemberVarScope" />
   <!-- Ensure class methods have scoping operators. -->
   <rule ref="Squiz.Scope.MethodScope" />
-  <!-- Check for usage of $this in static scope. -->
+  <!-- Don't allow usage of $this in static methods. -->
   <rule ref="Squiz.Scope.StaticThisUsage" />
   <!-- Prevent empty lines between function declaration and body. -->
   <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace" />
