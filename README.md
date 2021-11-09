@@ -2,10 +2,24 @@
 
 ## Installation
 
-Install the library via Composer:
+Add the following to your `composer.json`:
 
+```json
+{
+	"require-dev": {
+		"bigbite/phpcs-config": "dev-main"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:bigbite/phpcs-config.git"
+		}
+	]
+}
+```
+Then run
 ```bash
-$ composer require --dev bigbite/phpcs-config:dev-master
+$ composer update
 ```
 
 Create a `.phpcs.xml.dist` file in your project and add the following, replacing {PROJECT} with your project name:
