@@ -147,8 +147,6 @@
 
   <!-- Validate anonymous class declarations. -->
   <rule ref="PSR12.Classes.AnonClassDeclaration" />
-  <!-- Ensure classes are instantiated with parens. -->
-  <rule ref="PSR12.Classes.ClassInstantiation" />
   <!-- Ensure closing braces are the only content on a line. -->
   <rule ref="PSR12.Classes.ClosingBrace" />
   <!-- Ensure boolean operators are consistently placed. -->
