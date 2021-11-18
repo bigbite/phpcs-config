@@ -12,19 +12,19 @@
 
   <exclude-pattern>*/.git/*</exclude-pattern>
   <!-- WordPress site directories/files. -->
-	<exclude-pattern>*/wp-activate.php</exclude-pattern>
-	<exclude-pattern>*/wp-blog-header.php</exclude-pattern>
-	<exclude-pattern>*/wp-comments-post.php</exclude-pattern>
-	<exclude-pattern>*/wp-config-sample.php</exclude-pattern>
-	<exclude-pattern>*/wp-config.php</exclude-pattern>
-	<exclude-pattern>*/wp-cron.php</exclude-pattern>
-	<exclude-pattern>*/wp-links-opml.php</exclude-pattern>
-	<exclude-pattern>*/wp-load.php</exclude-pattern>
-	<exclude-pattern>*/wp-login.php</exclude-pattern>
-	<exclude-pattern>*/wp-mail.php</exclude-pattern>
-	<exclude-pattern>*/wp-settings.php</exclude-pattern>
-	<exclude-pattern>*/wp-signup.php</exclude-pattern>
-	<exclude-pattern>*/wp-trackback.php</exclude-pattern>
+  <exclude-pattern>*/wp-activate.php</exclude-pattern>
+  <exclude-pattern>*/wp-blog-header.php</exclude-pattern>
+  <exclude-pattern>*/wp-comments-post.php</exclude-pattern>
+  <exclude-pattern>*/wp-config-sample.php</exclude-pattern>
+  <exclude-pattern>*/wp-config.php</exclude-pattern>
+  <exclude-pattern>*/wp-cron.php</exclude-pattern>
+  <exclude-pattern>*/wp-links-opml.php</exclude-pattern>
+  <exclude-pattern>*/wp-load.php</exclude-pattern>
+  <exclude-pattern>*/wp-login.php</exclude-pattern>
+  <exclude-pattern>*/wp-mail.php</exclude-pattern>
+  <exclude-pattern>*/wp-settings.php</exclude-pattern>
+  <exclude-pattern>*/wp-signup.php</exclude-pattern>
+  <exclude-pattern>*/wp-trackback.php</exclude-pattern>
   <exclude-pattern>*/index.php</exclude-pattern>
   <exclude-pattern>*/mu-plugins/*</exclude-pattern>
   <exclude-pattern>*/private/*</exclude-pattern>
