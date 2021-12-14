@@ -6,9 +6,11 @@
     "require": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "squizlabs/php_codesniffer" : "^3.4.0",
+        "phpcsstandards/phpcsutils": "^1.0",
         "automattic/vipwpcs": "*"
     },
     "prefer-stable" : true,
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Paul Taylor",
@@ -19,5 +21,9 @@
             "email": "jon@bigbite.net"
         }
     ],
-    "scripts": {}
+    "scripts": {},
+    "require-dev": {
+        "phpcsstandards/phpcsdevtools": "^1.0",
+        "phpcompatibility/php-compatibility": "^9.3"
+    }
 }
