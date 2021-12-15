@@ -13,6 +13,10 @@
         {
             "name": "Paul Taylor",
             "email": "paul@bigbite.net"
+        },
+        {
+            "name": "Jon McPartland",
+            "email": "jon@bigbite.net"
         }
     ],
     "scripts": {}
