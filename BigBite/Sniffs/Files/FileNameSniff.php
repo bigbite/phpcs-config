@@ -129,11 +129,11 @@ class FileNameSniff extends WPFileNameSniff {
 
 	/**
 	 * Check non-class files in "wp-includes" with a "@subpackage Template" tag for a "-template" suffix.
-	 * 
+	 *
 	 * @param mixed $file     the file to check
 	 * @param mixed $fileName the name of the file to check
-	 * @param mixed $stackPtr the token stack 
-	 * 
+	 * @param mixed $stackPtr the token stack
+	 *
 	 * @return void
 	 */
 	protected function check_non_class_files( $file, $fileName, $stackPtr ) {
