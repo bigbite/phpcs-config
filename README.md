@@ -41,3 +41,7 @@ In order to pull the library in via composer in a CI environment, there are a fe
 
 **NB**: step #4 assumes that your CI environment will obfuscate the output of commands that use secure environment variables (e.g. Travis CI).  
 If your CI tool does not support this, then you may need to provide composer with an `auth.json` file, or other alternative means as listed [here](https://getcomposer.org/doc/articles/authentication-for-private-packages.md).
+
+## Developing
+
+To lint our ruleset's custom sniffs using our ruleset, run `composer phpcs`.
