@@ -29,8 +29,8 @@ class FileNameSniff extends WPFileNameSniff {
 	 *                  normal file processing.
 	 */
 	public function process_token( $stackPtr ) {
-		// Usage of `stripQuotes` is to ensure `stdin_path` passed by IDEs does not include quotes.
-		$file = TextStrings::stripQuotes( $this->phpcsFile->getFileName() );
+		// strip quotes to ensure `stdin_path` passed by IDEs does not include quotes.
+		$file = preg_replace( '`^([\'"])(.*)\1$`Ds', '$2', $this->phpcsFile->getFileName() );
 
 		if ( 'STDIN' === $file ) {
 			return;
