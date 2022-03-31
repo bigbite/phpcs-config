@@ -50,6 +50,8 @@
 		],
 		"install-cs": [
 			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
-		]
+		],
+		"all-checks": "composer lint && composer phpcs && composer is-complete && composer test",
+		"all-checks-strict": "composer lint && composer phpcs && composer is-complete-strict && composer test"
 	}
 }

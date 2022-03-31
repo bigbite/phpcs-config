@@ -44,4 +44,8 @@ If your CI tool does not support this, then you may need to provide composer wit
 
 ## Developing
 
-To lint our ruleset's custom sniffs using our ruleset, run `composer phpcs`.
+Clone this repository, and then run `composer install && composer install-cs`.  
+Please run the following command prior to creating a PR, and ensure that there are no errors:
+- `composer run all-checks`
+If you're feeling especially nice, you can run this command instead:
+- `composer run all-checks-strict`
