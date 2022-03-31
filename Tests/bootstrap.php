@@ -17,8 +17,6 @@ if ( ! defined( 'PHP_CODESNIFFER_IN_TESTS' ) ) {
 
 $ds = DIRECTORY_SEPARATOR;
 
-require_once __DIR__ . $ds . 'helpers.php';
-
 /*
  * Load the necessary PHPCS files.
  */

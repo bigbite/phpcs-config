@@ -44,7 +44,7 @@ class FileNameSniff extends WPFileNameSniff {
 
 		list( $ext, $file ) = explode( '.', strrev( $fileName ), 2 );
 
-		$expected = preg_replace( '/([a-z])(\d+)/', '$1-$2', kebab( strrev( $file ) ) ) . '.' . strrev( $ext );
+		$expected = preg_replace( '/([a-z])(\d+)/', '$1-$2', $this->kebab( strrev( $file ) ) ) . '.' . strrev( $ext );
 
 		/*
 		 * Generic check for lowercase hyphenated file names.
@@ -70,7 +70,7 @@ class FileNameSniff extends WPFileNameSniff {
 			if ( false !== $has_class && false === $this->is_test_class( $has_class ) ) {
 				$is_abstract = $this->phpcsFile->findPrevious( \T_ABSTRACT, $has_class );
 				$class_name  = $this->phpcsFile->getDeclarationName( $has_class );
-				$expected    = 'class-' . kebab( $class_name );
+				$expected    = 'class-' . $this->kebab( $class_name );
 				$err_message = 'Class file names should be based on the class name with "class-" prepended. Expected %s, but found %s.';
 
 				if ( $is_abstract ) {
@@ -123,6 +123,52 @@ class FileNameSniff extends WPFileNameSniff {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Convert a string to PascalCase
+	 *
+	 * @param string $string the string to texturise
+	 *
+	 * @return string
+	 */
+	protected function pascal( $string = '' ) {
+		$string = preg_replace( '/[\'"]/', '', $string );
+		$string = preg_replace( '/[^a-zA-Z0-9]+/', ' ', $string );
+		return preg_replace( '/\s+/', '', ucwords( $string ) );
+	}
+
+	/**
+	 * Convert a string to camelCase
+	 *
+	 * @param string $string the string to texturise
+	 *
+	 * @return string
+	 */
+	protected function camel( $string = '' ) {
+		return lcfirst( $this->pascal( $string ) );
+	}
+
+	/**
+	 * Convert a string to snake_case
+	 *
+	 * @param string $string the string to texturise
+	 *
+	 * @return string
+	 */
+	protected function snake( $string = '' ) {
+		return strtolower( preg_replace( '/(?>(?!^[A-Z]))([A-Z])/', '_$1', $this->pascal( $string ) ) );
+	}
+
+	/**
+	 * Convert a string to kebab-case
+	 *
+	 * @param string $string the string to texturise
+	 *
+	 * @return string
+	 */
+	protected function kebab( $string = '' ) {
+		return str_replace( '_', '-', $this->snake( $string ) );
 	}
 
 }
