@@ -44,7 +44,7 @@ class FileNameSniff extends WPFileNameSniff {
 
 		list( $ext, $file ) = explode( '.', strrev( $fileName ), 2 );
 
-		$expected = preg_replace( '/([a-z])(\d+)/', '$1-$2', $this->kebab( strrev( $file ) ) ) . '.' . strrev( $ext );
+		$expected = $this->kebab( strrev( $file ) ) . '.' . strrev( $ext );
 
 		/*
 		 * Generic check for lowercase hyphenated file names.
