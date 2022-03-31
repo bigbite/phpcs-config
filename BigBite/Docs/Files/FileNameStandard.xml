@@ -1,0 +1,9 @@
+<documentation title="File Names">
+  <standard>
+  <![CDATA[
+  Files containing classes should be prefixed with "class-" or "abstract-class", and be named
+  as the class name in lower-kebab-case. For example:
+  the file name for abstract class My_Class_Name {} would be "abstract-class-my-class-name.php".
+  ]]>
+  </standard>
+</documentation>

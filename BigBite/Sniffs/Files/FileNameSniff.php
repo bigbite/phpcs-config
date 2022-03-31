@@ -3,7 +3,7 @@
 /**
  * BigBite Coding Standards.
  *
- * @package bigbite\phpcs-config
+ * @package BigBite\phpcs-config
  * @link    https://github.com/bigbite/phpcs-config
  * @license https://opensource.org/licenses/MIT MIT
  */
@@ -41,7 +41,10 @@ class FileNameSniff extends WPFileNameSniff {
 		}
 
 		$fileName = basename( $file );
-		$expected = strtolower( str_replace( '_', '-', $fileName ) );
+
+		list( $ext, $file ) = explode( '.', strrev( $fileName ), 2 );
+
+		$expected = preg_replace( '/([a-z])(\d+)/', '$1-$2', kebab( strrev( $file ) ) ) . '.' . strrev( $ext );
 
 		/*
 		 * Generic check for lowercase hyphenated file names.
@@ -64,10 +67,10 @@ class FileNameSniff extends WPFileNameSniff {
 		if ( true === $this->strict_class_file_names ) {
 			$has_class = $this->phpcsFile->findNext( \T_CLASS, $stackPtr );
 
-			if ( false !== $has_class && false === $this->is_test_class( $this->phpcsFile, $has_class ) ) {
+			if ( false !== $has_class && false === $this->is_test_class( $has_class ) ) {
 				$is_abstract = $this->phpcsFile->findPrevious( \T_ABSTRACT, $has_class );
 				$class_name  = $this->phpcsFile->getDeclarationName( $has_class );
-				$expected    = 'class-' . strtolower( str_replace( '_', '-', $class_name ) );
+				$expected    = 'class-' . kebab( $class_name );
 				$err_message = 'Class file names should be based on the class name with "class-" prepended. Expected %s, but found %s.';
 
 				if ( $is_abstract ) {
@@ -75,18 +78,13 @@ class FileNameSniff extends WPFileNameSniff {
 					$err_message = 'Abstract class file names should be based on the class name with "abstract-class-" prepended. Expected %s, but found %s.';
 				}
 
-				if ( substr( $fileName, 0, -4 ) !== $expected && ! isset( $this->class_exceptions[ $fileName ] ) ) {
+				if ( substr( $fileName, 0, -4 ) !== $expected ) {
 					$this->phpcsFile->addError( $err_message, 0, 'InvalidClassFileName', [ $expected . '.php', $fileName ] );
 				}
 
 				unset( $expected );
 			}
 		}
-
-		/*
-		 * Check non-class files in "wp-includes" with a "@subpackage Template" tag for a "-template" suffix.
-		 */
-		$this->check_non_class_files( $file, $fileName, $stackPtr );
 
 		// Only run this sniff once per file, no need to run it again.
 		return ( $this->phpcsFile->numTokens + 1 );
@@ -105,17 +103,17 @@ class FileNameSniff extends WPFileNameSniff {
 		$i = -1;
 		while ( $i = $this->phpcsFile->findNext( \T_PHPCS_DISABLE, ( $i + 1 ) ) ) {
 			if ( empty( $this->tokens[ $i ]['sniffCodes'] )
-				|| isset( $this->tokens[ $i ]['sniffCodes']['WordPress'] )
-				|| isset( $this->tokens[ $i ]['sniffCodes']['WordPress.Files'] )
-				|| isset( $this->tokens[ $i ]['sniffCodes']['WordPress.Files.FileName'] )
+				|| isset( $this->tokens[ $i ]['sniffCodes']['BigBite'] )
+				|| isset( $this->tokens[ $i ]['sniffCodes']['BigBite.Files'] )
+				|| isset( $this->tokens[ $i ]['sniffCodes']['BigBite.Files.FileName'] )
 			) {
 				do {
 					$i = $this->phpcsFile->findNext( \T_PHPCS_ENABLE, ( $i + 1 ) );
 				} while ( false !== $i
 					&& ! empty( $this->tokens[ $i ]['sniffCodes'] )
-					&& ! isset( $this->tokens[ $i ]['sniffCodes']['WordPress'] )
-					&& ! isset( $this->tokens[ $i ]['sniffCodes']['WordPress.Files'] )
-					&& ! isset( $this->tokens[ $i ]['sniffCodes']['WordPress.Files.FileName'] ) );
+					&& ! isset( $this->tokens[ $i ]['sniffCodes']['BigBite'] )
+					&& ! isset( $this->tokens[ $i ]['sniffCodes']['BigBite.Files'] )
+					&& ! isset( $this->tokens[ $i ]['sniffCodes']['BigBite.Files.FileName'] ) );
 
 				if ( false === $i ) {
 					// The entire (rest of the) file is disabled.
@@ -125,53 +123,6 @@ class FileNameSniff extends WPFileNameSniff {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Check non-class files in "wp-includes" with a "@subpackage Template" tag for a "-template" suffix.
-	 *
-	 * @param mixed $file     the file to check
-	 * @param mixed $fileName the name of the file to check
-	 * @param mixed $stackPtr the token stack
-	 *
-	 * @return void
-	 */
-	protected function check_non_class_files( $file, $fileName, $stackPtr ) {
-		if ( false === strpos( $file, \DIRECTORY_SEPARATOR . 'wp-includes' . \DIRECTORY_SEPARATOR ) ) {
-			return;
-		}
-
-		$subpackage_tag = $this->phpcsFile->findNext( \T_DOC_COMMENT_TAG, $stackPtr, null, false, '@subpackage' );
-
-		if ( false === $subpackage_tag ) {
-			return;
-		}
-
-		$subpackage = $this->phpcsFile->findNext( \T_DOC_COMMENT_STRING, $subpackage_tag );
-
-		if ( false === $subpackage ) {
-			return;
-		}
-
-		$fileName_end = substr( $fileName, -13 );
-		$has_class    = $this->phpcsFile->findNext( \T_CLASS, $stackPtr );
-
-		if ( ( 'Template' === trim( $this->tokens[ $subpackage ]['content'] )
-			&& $this->tokens[ $subpackage_tag ]['line'] === $this->tokens[ $subpackage ]['line'] )
-			&& ( ( ! \defined( '\PHP_CODESNIFFER_IN_TESTS' ) && '-template.php' !== $fileName_end )
-			|| ( \defined( '\PHP_CODESNIFFER_IN_TESTS' ) && '-template.inc' !== $fileName_end ) )
-			&& false === $has_class
-		) {
-			$this->phpcsFile->addError(
-				'Files containing template tags should have "-template" appended to the end of the file name. Expected %s, but found %s.',
-				0,
-				'InvalidTemplateTagFileName',
-				[
-					substr( $fileName, 0, -4 ) . '-template.php',
-					$fileName,
-				]
-			);
-		}
 	}
 
 }
