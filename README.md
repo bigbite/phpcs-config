@@ -27,7 +27,7 @@ Create a `.phpcs.xml.dist` file in your project and add the following, replacing
 ```xml
 <?xml version="1.0"?>
 <ruleset name="{PROJECT} Rules">
-	<rule ref="vendor/bigbite/phpcs-config" />
+	<rule ref="vendor/bigbite/phpcs-config/BigBite" />
 </ruleset>
 ```
 
