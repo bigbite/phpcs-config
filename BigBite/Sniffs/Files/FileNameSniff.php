@@ -125,41 +125,6 @@ class FileNameSniff extends WPFileNameSniff {
 	}
 
 	/**
-	 * Convert a string to PascalCase
-	 *
-	 * @param string $string the string to texturise
-	 *
-	 * @return string
-	 */
-	protected function pascal( $string = '' ) {
-		$string = preg_replace( '/[\'"]/', '', $string );
-		$string = preg_replace( '/[^a-zA-Z0-9]+/', ' ', $string );
-		return preg_replace( '/\s+/', '', ucwords( $string ) );
-	}
-
-	/**
-	 * Convert a string to camelCase
-	 *
-	 * @param string $string the string to texturise
-	 *
-	 * @return string
-	 */
-	protected function camel( $string = '' ) {
-		return lcfirst( $this->pascal( $string ) );
-	}
-
-	/**
-	 * Convert a string to snake_case
-	 *
-	 * @param string $string the string to texturise
-	 *
-	 * @return string
-	 */
-	protected function snake( $string = '' ) {
-		return strtolower( preg_replace( '/(?>(?!^[A-Z]))([A-Z])/', '_$1', $this->pascal( $string ) ) );
-	}
-
-	/**
 	 * Convert a string to kebab-case
 	 *
 	 * @param string $string the string to texturise
@@ -167,13 +132,16 @@ class FileNameSniff extends WPFileNameSniff {
 	 * @return string
 	 */
 	protected function kebab( $string = '' ) {
-		$kebabbed = str_replace( '_', '-', $this->snake( $string ) );
+		$kebab = preg_replace( '/(?>(?!^[A-Z]))([a-z])([A-Z])/', '$1-$2', $string );
+		$kebab = strtolower( $kebab );
+		$kebab = str_replace( '_', '-', $kebab );
 
+		// allow wordpress to be one word
 		if ( false !== strpos( $string, 'WordPress' ) ) {
-			$kebabbed = str_replace( 'word-press', 'wordpress', $kebabbed );
+			$kebab = str_replace( 'word-press', 'wordpress', $kebab );
 		}
 
-		return $kebabbed;
+		return $kebab;
 	}
 
 }
