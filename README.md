@@ -39,7 +39,7 @@ In order to pull the library in via composer in a CI environment, there are a fe
 3. provide that token to your CI environment.  
 4. add this command to your CI build procedure `composer config github-oauth.github.com "$GH_TOKEN"`, where `$GH_TOKEN` is the environment variable.  
 
-**NB**: step #4 assumes that your CI environment will obfuscate the output of commands that use secure environment variables (e.g. Travis CI).  
+**NB**: step 4 assumes that your CI environment will obfuscate the output of commands that use secure environment variables (e.g. Travis CI).  
 If your CI tool does not support this, then you may need to provide composer with an `auth.json` file, or other alternative means as listed [here](https://getcomposer.org/doc/articles/authentication-for-private-packages.md).
 
 ## Developing
