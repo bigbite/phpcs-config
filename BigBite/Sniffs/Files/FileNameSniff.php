@@ -12,7 +12,6 @@ declare( strict_types = 1 );
 
 namespace BigBiteCS\BigBite\Sniffs\Files;
 
-use PHPCSUtils\Utils\TextStrings;
 use WordPressCS\WordPress\Sniffs\Files\FileNameSniff as WPFileNameSniff;
 
 /**
@@ -168,7 +167,13 @@ class FileNameSniff extends WPFileNameSniff {
 	 * @return string
 	 */
 	protected function kebab( $string = '' ) {
-		return str_replace( '_', '-', $this->snake( $string ) );
+		$kebabbed = str_replace( '_', '-', $this->snake( $string ) );
+
+		if ( false !== strpos( $string, 'WordPress' ) ) {
+			$kebabbed = str_replace( 'word-press', 'wordpress', $kebabbed );
+		}
+
+		return $kebabbed;
 	}
 
 }
