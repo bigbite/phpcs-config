@@ -1,14 +1,27 @@
 {
     "name": "bigbite/phpcs-config",
     "type": "phpcodesniffer-standard",
-    "version": "dev-master",
     "license": "MIT",
     "require": {
-        "dealerdirect/phpcodesniffer-composer-installer": "*",
-        "squizlabs/php_codesniffer" : "^3.4.0",
-        "automattic/vipwpcs": "*"
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7.2",
+        "squizlabs/php_codesniffer" : "3.6.2",
+        "wp-coding-standards/wpcs": "2.3.0",
+        "automattic/vipwpcs": "2.3.3",
+        "php": ">=7.0"
     },
+    "require-dev": {
+        "phpcsstandards/phpcsdevtools": "1.1.0",
+        "phpcompatibility/php-compatibility": "9.3.5",
+        "php-parallel-lint/php-parallel-lint": "1.3.2",
+        "phpunit/phpunit": "7.5.20"
+    },
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
     "prefer-stable" : true,
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Paul Taylor",
@@ -19,5 +32,26 @@
             "email": "jon@bigbite.net"
         }
     ],
-    "scripts": {}
+    "scripts": {
+		"lint": [
+			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
+		],
+		"phpcs": [
+			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcs ."
+		],
+		"test": [
+			"@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
+		],
+		"is-complete": [
+			"@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite"
+		],
+		"is-complete-strict": [
+			"@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite"
+		],
+		"install-cs": [
+			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+		],
+		"all-checks": "composer lint && composer phpcs && composer is-complete && composer test",
+		"all-checks-strict": "composer lint && composer phpcs && composer is-complete-strict && composer test"
+	}
 }

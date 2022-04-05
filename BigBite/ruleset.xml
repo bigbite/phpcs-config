@@ -61,6 +61,8 @@
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital" />
     <!-- Don't enforce a period at the end of comments. -->
     <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+    <!-- We have our own file name sniff - WP doesn't account for abstract classes -->
+    <exclude name="WordPress.Files.FileName" />
     <!-- Shorthand ternaries can be okay - should be checked at PR review time -->
     <exclude name="WordPress.PHP.DisallowShortTernary.Found" />
     <!-- Don't cause build failures out of spite -->
