@@ -1,5 +1,6 @@
 {
     "name": "bigbite/phpcs-config",
+	"desription": "Big Bite's PHP Coding Standards.",
     "type": "phpcodesniffer-standard",
     "license": "MIT",
     "require": {
