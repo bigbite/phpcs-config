@@ -33,6 +33,15 @@
             "email": "jon@bigbite.net"
         }
     ],
+	"archive": {
+		"exclude": [
+			"/.editorconfig",
+			"/.gitignore",
+			"/.phpcs.xml.dist",
+			"/Tests",
+			"/phpunit.xml.dist"
+		]
+	},
 	"scripts-descriptions": {
 		"lint": "Runs PHP syntax error checks",
 		"phpcs": "Runs PHP coding standard checks",
