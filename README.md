@@ -26,5 +26,6 @@ Create a `.phpcs.xml.dist` file in your project and add the following, replacing
 Clone this repository, and then run `composer install && composer install-cs`.  
 Please run the following command prior to creating a PR, and ensure that there are no errors:
 - `composer run all-checks`
+
 If you're feeling especially nice, you can run this command instead:
 - `composer run all-checks-strict`
