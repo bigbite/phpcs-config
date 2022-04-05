@@ -1,0 +1,20 @@
+os: linux
+dist: bionic
+language: php
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+  - 8.0
+  - 8.1
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+before_install:
+- phpenv config-rm xdebug.ini
+install:
+- composer install
+script:
+- composer run all-checks
