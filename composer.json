@@ -1,6 +1,6 @@
 {
     "name": "bigbite/phpcs-config",
-	"description": "Big Bite's PHP Coding Standards.",
+    "description": "Big Bite's PHP Coding Standards.",
     "type": "phpcodesniffer-standard",
     "license": "MIT",
     "require": {
@@ -16,13 +16,14 @@
         "php-parallel-lint/php-parallel-lint": "1.3.2",
         "phpunit/phpunit": "7.5.20"
     },
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	},
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "prefer-stable" : true,
     "minimum-stability": "dev",
+    "non-feature-branches": ["chore/*", "hotfix/*"],
     "authors": [
         {
             "name": "Paul Taylor",
@@ -33,36 +34,36 @@
             "email": "jon@bigbite.net"
         }
     ],
-	"scripts-descriptions": {
-		"lint": "Runs PHP syntax error checks",
-		"phpcs": "Runs PHP coding standard checks",
-		"test": "Runs PHP unit tests",
-		"is-complete": "Checks that all custom Sniffs are accompanied by unit tests",
-		"is-complete-strict": "Checks that all custom Sniffs are acommpanied by unit tests and documentation",
-		"install-cs": "Triggers registration of PHPCS rulesets with PHPCS",
-		"all-checks": "Runs the scripts 'lint', 'phpcs', 'is-complete', 'test' in that order",
-		"all-checks-strict": "Runs the scripts 'lint', 'phpcs', 'is-complete-strict', 'test' in that order"
-	},
+    "scripts-descriptions": {
+        "lint": "Runs PHP syntax error checks",
+        "phpcs": "Runs PHP coding standard checks",
+        "test": "Runs PHP unit tests",
+        "is-complete": "Checks that all custom Sniffs are accompanied by unit tests",
+        "is-complete-strict": "Checks that all custom Sniffs are acommpanied by unit tests and documentation",
+        "install-cs": "Triggers registration of PHPCS rulesets with PHPCS",
+        "all-checks": "Runs the scripts 'lint', 'phpcs', 'is-complete', 'test' in that order",
+        "all-checks-strict": "Runs the scripts 'lint', 'phpcs', 'is-complete-strict', 'test' in that order"
+    },
     "scripts": {
-		"lint": [
-			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
-		],
-		"phpcs": [
-			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcs ."
-		],
-		"test": [
-			"@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
-		],
-		"is-complete": [
-			"@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite"
-		],
-		"is-complete-strict": [
-			"@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite"
-		],
-		"install-cs": [
-			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
-		],
-		"all-checks": "composer lint && composer phpcs && composer is-complete && composer test",
-		"all-checks-strict": "composer lint && composer phpcs && composer is-complete-strict && composer test"
-	}
+        "lint": [
+            "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
+        ],
+        "phpcs": [
+            "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs ."
+        ],
+        "test": [
+            "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
+        ],
+        "is-complete": [
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite"
+        ],
+        "is-complete-strict": [
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite"
+        ],
+        "install-cs": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "all-checks": "composer lint && composer phpcs && composer is-complete && composer test",
+        "all-checks-strict": "composer lint && composer phpcs && composer is-complete-strict && composer test"
+    }
 }
