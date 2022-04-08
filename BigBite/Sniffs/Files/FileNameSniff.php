@@ -31,7 +31,7 @@ class FileNameSniff extends WPFileNameSniff {
 		// strip quotes to ensure `stdin_path` passed by IDEs does not include quotes.
 		$file = preg_replace( '`^([\'"])(.*)\1$`Ds', '$2', $this->phpcsFile->getFileName() );
 
-		if ( 'STDIN' === $file ) {
+		if ( 'STDIN' === $file || ! $file ) {
 			return;
 		}
 
@@ -69,6 +69,11 @@ class FileNameSniff extends WPFileNameSniff {
 			if ( false !== $has_class && false === $this->is_test_class( $has_class ) ) {
 				$is_abstract = $this->phpcsFile->findPrevious( \T_ABSTRACT, $has_class );
 				$class_name  = $this->phpcsFile->getDeclarationName( $has_class );
+
+				if ( is_null( $class_name ) ) {
+					$class_name = 'anonymous';
+				}
+
 				$expected    = 'class-' . $this->kebab( $class_name );
 				$err_message = 'Class file names should be based on the class name with "class-" prepended. Expected %s, but found %s.';
 

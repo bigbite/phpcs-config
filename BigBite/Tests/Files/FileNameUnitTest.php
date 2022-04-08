@@ -21,7 +21,7 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 	/**
 	 * Error files with the expected nr of errors.
 	 *
-	 * @var array
+	 * @var array<string,int>
 	 */
 	private $expected_results = array(
 
@@ -132,7 +132,8 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 	 * Returns the lines where errors should occur.
 	 *
 	 * @param string $testFile The name of the file being tested.
-	 * @return array <int line number> => <int number of errors>
+	 *
+	 * @return array<int,int> <line number> => <number of errors>
 	 */
 	public function getErrorList( $testFile = '' ) {
 		if ( isset( $this->expected_results[ $testFile ] ) ) {
@@ -147,7 +148,7 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 	/**
 	 * Returns the lines where warnings should occur.
 	 *
-	 * @return array <int line number> => <int number of warnings>
+	 * @return array<int,int> <line number> => <number of warnings>
 	 */
 	public function getWarningList() {
 		return array();
