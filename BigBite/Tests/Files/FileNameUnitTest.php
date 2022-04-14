@@ -36,12 +36,18 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 		'SomeView.inc'                               => 1,
 
 		// Class file names.
-		'my-class.inc'                               => 1,
 		'my-abstract-class.inc'                      => 1,
-		'class-different-class.inc'                  => 1,
+		'my-class.inc'                               => 1,
+		'my-interface.inc'                           => 1,
+		'my-trait.inc'                               => 1,
 		'abstract-class-different-class.inc'         => 1,
-		'ClassMyClass.inc'                           => 2,
+		'class-different-class.inc'                  => 1,
+		'interface-different-interface.inc'          => 1,
+		'trait-different-trait.inc'                  => 1,
 		'AbstractClassMyClass.inc'                   => 2,
+		'ClassMyClass.inc'                           => 2,
+		'InterfaceMyInterface.inc'                   => 2,
+		'TraitMyTrait.inc'                           => 2,
 
 		// Theme specific exceptions in a non-theme context.
 		'single-my_post_type.inc'                    => 1,
@@ -52,8 +58,10 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 		 */
 
 		// Non-strict class names still have to comply with lowercase hyphenated.
-		'ClassNonStrictClass.inc'                    => 1,
 		'AbstractClassNonStrictClass.inc'            => 1,
+		'ClassNonStrictClass.inc'                    => 1,
+		'InterfaceNonStrictClass.inc'                => 1,
+		'TraitNonStrictClass.inc'                    => 1,
 
 		/*
 		 * In /FileNameUnitTests/PHPCSAnnotations.
