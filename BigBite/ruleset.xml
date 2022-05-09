@@ -130,8 +130,6 @@
   <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
   <!-- Normalise whitespace around class properties. -->
   <rule ref="Squiz.WhiteSpace.MemberVarSpacing" />
-  <!-- Normalise whitespace around operators. -->
-  <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
   <!-- Normalise whitespace around class properties. -->
   <rule ref="Squiz.WhiteSpace.PropertyLabelSpacing" />
 
@@ -179,8 +177,6 @@
   <rule ref="PSR12.Keywords.ShortFormTypeKeywords" />
   <!-- Prevent overly-enthusiastic use of compound namespaces. -->
   <rule ref="PSR12.Namespaces.CompoundNamespaceDepth" />
-  <!-- Normalise whitespace surrounding operators. -->
-  <rule ref="PSR12.Operators.OperatorSpacing" />
   <!-- Ensure class constants have scoping operators. -->
   <rule ref="PSR12.Properties.ConstantVisibility" />
   <!-- Validate use statements. -->
