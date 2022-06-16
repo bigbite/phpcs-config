@@ -655,16 +655,16 @@
         },
         {
             "name": "phpcsstandards/phpcsdevtools",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSDevTools.git",
-                "reference": "3192581821cc654d54710896a4c8fe89fbd42ee3"
+                "reference": "2d9d8eb417a932bc04c30e435c9e41da02ec8685"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSDevTools/zipball/3192581821cc654d54710896a4c8fe89fbd42ee3",
-                "reference": "3192581821cc654d54710896a4c8fe89fbd42ee3",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSDevTools/zipball/2d9d8eb417a932bc04c30e435c9e41da02ec8685",
+                "reference": "2d9d8eb417a932bc04c30e435c9e41da02ec8685",
                 "shasum": ""
             },
             "require": {
@@ -673,9 +673,9 @@
                 "squizlabs/php_codesniffer": "^3.1.0"
             },
             "require-dev": {
-                "php-parallel-lint/php-console-highlighter": "^0.5",
-                "php-parallel-lint/php-parallel-lint": "^1.0",
-                "phpcsstandards/phpcsdevcs": "^1.1.1",
+                "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcsstandards/phpcsdevcs": "^1.1.3",
                 "phpcsstandards/phpcsutils": "^1.0",
                 "phpunit/phpunit": "^4.5 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
                 "roave/security-advisories": "dev-master"
@@ -711,7 +711,7 @@
                 "issues": "https://github.com/PHPCSStandards/PHPCSDevTools/issues",
                 "source": "https://github.com/PHPCSStandards/PHPCSDevTools"
             },
-            "time": "2020-12-20T12:45:21+00:00"
+            "time": "2022-04-28T19:44:12+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2242,5 +2242,5 @@
         "php": ">=7.2 <8"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
