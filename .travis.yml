@@ -5,12 +5,14 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
+  - 8.1
 cache:
   directories:
   - "$HOME/.composer/cache"
 before_install:
 - phpenv config-rm xdebug.ini
 install:
-- composer install
+- ./bin/composer
 script:
-- composer run all-checks
+- composer run all-checks-strict
