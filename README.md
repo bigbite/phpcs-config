@@ -6,7 +6,7 @@ It is primarily based upon [WPCS](https://github.com/WordPress/WordPress-Coding-
 
 ## Installation
 
-Currently, this standard is only compatible with PHP versions 7.2–8.0; due to limitations in the project's dependencies.
+Currently, this standard is only compatible with PHP version 8.0; due to limitations in the project's dependencies.
 
 Run the following command in terminal:
 ```bash
@@ -23,7 +23,7 @@ Create a `.phpcs.xml.dist` file in your project and add the following, replacing
 ```xml
 <?xml version="1.0"?>
 <ruleset name="{PROJECT} Rules">
-	<rule ref="BigBite" />
+	<rule ref="./vendor/bigbite/phpcs-config/BigBite" />
 </ruleset>
 ```
 
