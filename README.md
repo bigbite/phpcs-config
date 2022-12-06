@@ -27,6 +27,19 @@ Create a `.phpcs.xml.dist` file in your project and add the following, replacing
 </ruleset>
 ```
 
+Alternatively, you can install the standard globally:
+```bash
+composer global require --dev bigbite/phpcs-config
+```
+
+And reference the standard directly within your `.phpcs.xml.dist`:
+```xml
+<?xml version="1.0"?>
+<ruleset name="{PROJECT} Rules">
+	<rule ref="BigBite" />
+</ruleset>
+```
+
 ## Developing
 
 Please note that the PHPUnit test suite is not yet compatible with PHP 8.*.
