@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# if PHP 8+, ignore platform requirements (for PHPUnit)
-if [ "$(printf '%s\n' "7.9.9" "$(php -r 'echo PHP_VERSION;')" | sort -V | head -n1)" = "7.9.9" ]; then
-  composer install --ignore-platform-reqs;
-else
-  composer install;
-fi
