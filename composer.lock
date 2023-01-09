@@ -656,20 +656,20 @@
         },
         {
             "name": "phpcsstandards/phpcsdevtools",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSDevTools.git",
-                "reference": "3a2cdfb1bf9d3565a7c337a44438ab74e2336ded"
+                "reference": "750c8a99edc0ef7aa616a58cc64d5badad9c10cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSDevTools/zipball/3a2cdfb1bf9d3565a7c337a44438ab74e2336ded",
-                "reference": "3a2cdfb1bf9d3565a7c337a44438ab74e2336ded",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSDevTools/zipball/750c8a99edc0ef7aa616a58cc64d5badad9c10cc",
+                "reference": "750c8a99edc0ef7aa616a58cc64d5badad9c10cc",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
                 "squizlabs/php_codesniffer": "^3.1.0"
             },
@@ -716,7 +716,7 @@
                 "issues": "https://github.com/PHPCSStandards/PHPCSDevTools/issues",
                 "source": "https://github.com/PHPCSStandards/PHPCSDevTools"
             },
-            "time": "2022-09-23T11:29:38+00:00"
+            "time": "2023-01-05T13:52:42+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
