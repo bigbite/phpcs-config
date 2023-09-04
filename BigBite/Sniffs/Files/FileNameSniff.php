@@ -154,7 +154,10 @@ final class FileNameSniff extends Sniff {
 			return;
 		}
 
-		$class_ptr = $this->phpcsFile->findNext( \T_CLASS, $stack_ptr );
+		$class_ptr     = $this->phpcsFile->findNext( \T_CLASS, $stack_ptr );
+		$trait_ptr     = $this->phpcsFile->findNext( \T_TRAIT, $stack_ptr );
+		$interface_ptr = $this->phpcsFile->findNext( \T_INTERFACE, $stack_ptr );
+
 		if ( false !== $class_ptr && $this->is_test_class( $this->phpcsFile, $class_ptr ) ) {
 			/*
 			 * This rule should not be applied to test classes (at all).
@@ -169,24 +172,31 @@ final class FileNameSniff extends Sniff {
 
 		$file_name = basename( $file );
 
-		$this->check_filename_is_hyphenated( $file_name );
-
-		if ( true !== $this->strict_file_names ) {
+		// plain file, just check hyphenation.
+		if ( ! $class_ptr && ! $trait_ptr && ! $interface_ptr ) {
+			$this->check_filename_is_hyphenated( $file_name );
 			return ( $this->phpcsFile->numTokens + 1 );
 		}
 
+		// not a plain file, but not strict, just check hyphenation.
+		if ( true !== $this->strict_file_names ) {
+			$this->check_filename_is_hyphenated( $file_name );
+			return ( $this->phpcsFile->numTokens + 1 );
+		}
+
+		// check for "(abstract-)class-" prefix.
 		if ( false !== $class_ptr ) {
 			$this->check_filename_has_class_prefix( $class_ptr, $file_name );
 			return ( $this->phpcsFile->numTokens + 1 );
 		}
 
-		$trait_ptr = $this->phpcsFile->findNext( \T_TRAIT, $stack_ptr );
+		// check for "trait-" prefix.
 		if ( false !== $trait_ptr ) {
 			$this->check_filename_has_trait_prefix( $trait_ptr, $file_name );
 			return ( $this->phpcsFile->numTokens + 1 );
 		}
 
-		$interface_ptr = $this->phpcsFile->findNext( \T_INTERFACE, $stack_ptr );
+		// check for "interface-" prefix.
 		if ( false !== $interface_ptr ) {
 			$this->check_filename_has_interface_prefix( $interface_ptr, $file_name );
 			return ( $this->phpcsFile->numTokens + 1 );

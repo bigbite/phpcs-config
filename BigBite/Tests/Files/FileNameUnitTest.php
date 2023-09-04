@@ -44,10 +44,10 @@ final class FileNameUnitTest extends AbstractSniffUnitTest {
 		'class-different-class.inc'                  => 1,
 		'interface-different-interface.inc'          => 1,
 		'trait-different-trait.inc'                  => 1,
-		'AbstractClassMyClass.inc'                   => 2,
-		'ClassMyClass.inc'                           => 2,
-		'InterfaceMyInterface.inc'                   => 2,
-		'TraitMyTrait.inc'                           => 2,
+		'AbstractClassMyClass.inc'                   => 1,
+		'ClassMyClass.inc'                           => 1,
+		'InterfaceMyInterface.inc'                   => 1,
+		'TraitMyTrait.inc'                           => 1,
 
 		// Theme specific exceptions in a non-theme context.
 		'single-my_post_type.inc'                    => 1,
