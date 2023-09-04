@@ -1,14 +1,16 @@
 {
     "name": "bigbite/phpcs-config",
-    "description": "Big Bite's PHP Coding Standards.",
     "type": "phpcodesniffer-standard",
+    "description": "Big Bite's PHP Coding Standards.",
+	"keywords": ["phpcs", "standards", "static analysis"],
     "license": "MIT",
     "require": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
-        "squizlabs/php_codesniffer" : "^3.6.2",
-        "wp-coding-standards/wpcs": "^2.3.0",
-        "automattic/vipwpcs": "^2.3.3",
-        "php": ">=7.2"
+        "squizlabs/php_codesniffer" : "^3.7.2",
+        "wp-coding-standards/wpcs": "^3.0",
+        "automattic/vipwpcs": "dev-develop",
+        "php": ">=7.2",
+        "phpcsstandards/phpcsutils": "^1.0.8"
     },
     "require-dev": {
         "phpcsstandards/phpcsdevtools": "^1.1.0",
@@ -51,7 +53,6 @@
 		"analyse": "Runs PHPStan Static Analysis checks",
         "is-complete": "Checks that all custom Sniffs are accompanied by unit tests",
         "is-complete-strict": "Checks that all custom Sniffs are acommpanied by unit tests and documentation",
-        "install-cs": "Triggers registration of PHPCS rulesets with PHPCS",
         "all-checks": "Runs the scripts 'lint', 'phpcs', 'is-complete', 'test', 'analyse' in that order",
         "all-checks-strict": "Runs the scripts 'lint', 'phpcs', 'is-complete-strict', 'test', 'analyse' in that order"
     },
@@ -73,9 +74,6 @@
         ],
         "is-complete-strict": [
             "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite"
-        ],
-        "install-cs": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
         ],
         "all-checks": [
 			"@lint",
