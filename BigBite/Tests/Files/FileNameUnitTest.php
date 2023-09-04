@@ -16,7 +16,7 @@ use BigBiteCS\BigBite\Tests\AbstractSniffUnitTest;
  *
  * @package BigBiteCS\BigBite
  */
-class FileNameUnitTest extends AbstractSniffUnitTest {
+final class FileNameUnitTest extends AbstractSniffUnitTest {
 
 	/**
 	 * Error files with the expected nr of errors.
@@ -121,32 +121,32 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 	/**
 	 * Get a list of all test files to check.
 	 *
-	 * @param string $testFileBase The base path that the unit tests files will have.
+	 * @param string $test_file_base The base path that the unit tests files will have.
 	 *
 	 * @return string[]
 	 */
-	protected function getTestFiles( $testFileBase ) {
+	protected function getTestFiles( $test_file_base ) {
 		$sep        = \DIRECTORY_SEPARATOR;
-		$test_files = glob( dirname( $testFileBase ) . $sep . 'FileNameUnitTests{' . $sep . ',' . $sep . '*' . $sep . '}*.inc', \GLOB_BRACE );
+		$test_files = glob( dirname( $test_file_base ) . $sep . 'FileNameUnitTests{' . $sep . ',' . $sep . '*' . $sep . '}*.inc', \GLOB_BRACE );
 
 		if ( ! empty( $test_files ) ) {
 			return $test_files;
 		}
 
-		return array( $testFileBase . '.inc' );
+		return array( $test_file_base . '.inc' );
 	}
 
 	/**
 	 * Returns the lines where errors should occur.
 	 *
-	 * @param string $testFile The name of the file being tested.
+	 * @param string $test_file The name of the file being tested.
 	 *
 	 * @return array<int,int> <line number> => <number of errors>
 	 */
-	public function getErrorList( $testFile = '' ) {
-		if ( isset( $this->expected_results[ $testFile ] ) ) {
+	public function getErrorList( $test_file = '' ) {
+		if ( isset( $this->expected_results[ $test_file ] ) ) {
 			return array(
-				1 => $this->expected_results[ $testFile ],
+				1 => $this->expected_results[ $test_file ],
 			);
 		}
 
@@ -161,5 +161,4 @@ class FileNameUnitTest extends AbstractSniffUnitTest {
 	public function getWarningList() {
 		return array();
 	}
-
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * BigBite Coding Standard.
  *
@@ -9,6 +8,8 @@
  *   {@link https://github.com/squizlabs/PHP_CodeSniffer/pull/1384}
  * - Load the Composer autoload file.
  * - Automatically limit the testing to the BigBite tests.
+ *
+ * @package BigBiteCS\BigBite
  */
 
 if ( ! defined( 'PHP_CODESNIFFER_IN_TESTS' ) ) {
@@ -54,14 +55,14 @@ for that PHPCS install.
 	die( 1 );
 }
 
-$bigbite_standards = [
+$bigbite_standards = array(
 	'BigBite' => true,
-];
+);
 
 $all_standards   = PHP_CodeSniffer\Util\Standards::getInstalledStandards();
 $all_standards[] = 'Generic';
 
-$ignored_standards = [];
+$ignored_standards = array();
 foreach ( $all_standards as $standard ) {
 	if ( isset( $bigbite_standards[ $standard ] ) === true ) {
 		continue;
@@ -75,6 +76,7 @@ $standards_to_ignore_string = implode( ',', $ignored_standards );
 /*
  * Set the PHPCS_IGNORE_TEST environment variable to ignore tests from other standards.
  */
+// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_putenv
 putenv( "PHPCS_IGNORE_TESTS={$standards_to_ignore_string}" );
 
 // Clean up.
