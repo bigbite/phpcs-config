@@ -10,7 +10,8 @@
         "wp-coding-standards/wpcs": "^3.0",
         "automattic/vipwpcs": "^3.0",
         "php": ">=7.2",
-        "phpcsstandards/phpcsutils": "^1.0.8"
+        "phpcsstandards/phpcsutils": "^1.0.8",
+        "phpcsstandards/phpcsextra": "^1.1"
     },
     "require-dev": {
         "phpcsstandards/phpcsdevtools": "^1.1.0",
