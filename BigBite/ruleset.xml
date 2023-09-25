@@ -68,10 +68,6 @@
 
   <rule ref="WordPress-VIP-Go" />
 
-  <!-- Disallow mixed string/int keys in arrays -->
-  <rule ref="Universal.Arrays.MixedArrayKeyTypes" />
-  <!-- Disallow mixed string/int keys in arrays (where the int keys aren't explicitly set) -->
-  <rule ref="Universal.Arrays.MixedKeyedUnkeyedArray" />
   <!-- Disallow closures longer than 5 (warn) or 8 (error) lines long -->
   <rule ref="Universal.FunctionDeclarations.NoLongClosures" />
   <!-- Enforce non-private, non-abstract methods in traits to be declared as final -->
