@@ -50,10 +50,6 @@
     <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
     <!-- Don't enforce a file comment, since we enforce class, method, and function comments. -->
     <exclude name="Squiz.Commenting.FileComment" />
-    <!-- Allow tidier hooks that leverage anonymous functions. -->
-    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
     <!-- Be slightly less aggressive about DocBlock formatting. -->
     <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop" />
