@@ -47,35 +47,34 @@
 
   <rule ref="WordPress">
     <!-- Don't enforce long-form array syntax. -->
-    <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+    <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
     <!-- Don't enforce a file comment, since we enforce class, method, and function comments. -->
-    <exclude name="PEAR.Commenting.FileComment" />
     <exclude name="Squiz.Commenting.FileComment" />
-    <!-- Allow tidier hooks that leverage anonymous functions. -->
-    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
     <!-- Be slightly less aggressive about DocBlock formatting. -->
     <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop" />
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital" />
     <!-- Don't enforce a period at the end of comments. -->
     <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+    <!-- For consistency, allow a blank line before the class closing brace -->
+    <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
     <!-- We have our own file name sniff - WP doesn't account for abstract classes -->
     <exclude name="WordPress.Files.FileName" />
     <!-- Shorthand ternaries can be okay - should be checked at PR review time -->
-    <exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+    <exclude name="Universal.Operators.DisallowShortTernary.Found" />
     <!-- Don't cause build failures out of spite -->
     <exclude name="WordPress.WP.CapitalPDangit.Misspelled" />
   </rule>
 
-  <rule ref="WordPress-VIP-Go">
-    <!-- Allow usage of static variables outside of classes -->
-    <exclude name="WordPressVIPMinimum.Variables.VariableAnalysis.StaticOutsideClass" />
-  </rule>
+  <rule ref="WordPress-VIP-Go" />
 
-  <!-- Ensure we're consistant with shorthand array syntax. -->
-  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+  <!-- Disallow closures longer than 5 (warn) or 8 (error) lines long -->
+  <rule ref="Universal.FunctionDeclarations.NoLongClosures" />
+  <!-- Enforce non-private, non-abstract methods in traits to be declared as final -->
+  <rule ref="Universal.FunctionDeclarations.RequireFinalMethodsInTraits" />
+  <!-- Enforce the use of the boolean && and || operators instead of the logical and/or operators -->
+  <rule ref="Universal.Operators.DisallowLogicalAndOr" />
+
   <!-- Warn about unused function parameters -->
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
     <!-- Except under circumstances in which they make sense. -->
@@ -135,14 +134,6 @@
   <!-- Normalise whitespace around class properties. -->
   <rule ref="Squiz.WhiteSpace.PropertyLabelSpacing" />
 
-  <!-- Ensure files end in a newline -->
-  <rule ref="PSR2.Files.EndFileNewline" />
-  <!-- Ensure there are no "else if" statements (use "elseif"). -->
-  <rule ref="PSR2.ControlStructures.ElseIfDeclaration" />
-  <!-- Validate switch statements. -->
-  <rule ref="PSR2.ControlStructures.SwitchDeclaration" />
-  <!-- Prevent empty lines between method bodies and closing braces. -->
-  <rule ref="PSR2.Methods.FunctionClosingBrace" />
   <!-- Ensure use statements are correct. -->
   <rule ref="PSR2.Namespaces.UseDeclaration" />
 
@@ -171,12 +162,6 @@
   <rule ref="PSR12.Files.ImportStatement" />
   <!-- Prevent short opening PHP tag. -->
   <rule ref="PSR12.Files.OpenTag" />
-  <!-- Ensure no superfluous whitespace around nullable type hints. -->
-  <rule ref="PSR12.Functions.NullableTypeDeclaration" />
-  <!-- Validate return type hints. -->
-  <rule ref="PSR12.Functions.ReturnTypeDeclaration" />
-  <!-- Enforce shorthand type hints (int/bool, not integer/boolean). -->
-  <rule ref="PSR12.Keywords.ShortFormTypeKeywords" />
   <!-- Prevent overly-enthusiastic use of compound namespaces. -->
   <rule ref="PSR12.Namespaces.CompoundNamespaceDepth" />
   <!-- Normalise whitespace surrounding operators. -->
