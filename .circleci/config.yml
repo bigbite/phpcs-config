@@ -27,6 +27,32 @@ jobs:
           command: |
             composer run all-checks-strict
           name: Run all checks
+  php_81_tests:
+    docker:
+      - image: cimg/php:8.1
+    steps:
+      - checkout
+      - run:
+          command: |
+            composer install --ignore-platform-reqs
+          name: Composer install
+      - run:
+          command: |
+            composer run all-checks-strict
+          name: Run all checks
+  php_82_tests:
+    docker:
+      - image: cimg/php:8.2
+    steps:
+      - checkout
+      - run:
+          command: |
+            composer install --ignore-platform-reqs
+          name: Composer install
+      - run:
+          command: |
+            composer run all-checks-strict
+          name: Run all checks
   notify_slack:
     docker:
       - image: cimg/node:17.2.0
@@ -41,6 +67,8 @@ workflows:
     jobs:
       - php_74_tests
       - php_80_tests
+      - php_81_tests
+      - php_82_tests
   run_notify_slack:
     jobs:
       - notify_slack:
