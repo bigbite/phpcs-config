@@ -6,8 +6,6 @@ It is primarily based upon [WPCS](https://github.com/WordPress/WordPress-Coding-
 
 ## Installation
 
-Currently, this standard is only compatible with PHP version 8.0; due to limitations in the project's dependencies.
-
 Run the following command in terminal:
 ```bash
 composer require --dev bigbite/phpcs-config
