@@ -95,8 +95,6 @@
   <!-- Ensure no space after spread operator. -->
   <rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter" />
 
-  <!-- Disallow pearl-style comments (#) ... -->
-  <rule ref="PEAR.Commenting.InlineComment" />
   <!-- Enforce wp-style spaces between parens. -->
   <rule ref="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
   <rule ref="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
