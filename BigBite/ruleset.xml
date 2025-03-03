@@ -44,6 +44,10 @@
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <!-- Local files. -->
   <exclude-pattern>*/vip-config/env-local-config.php</exclude-pattern>
+  <!-- Built asset files from @wordpress/scripts. -->
+  <exclude-pattern>*/build/*.asset.php</exclude-pattern>
+  <!-- Built asset files from Build Tools. -->
+  <exclude-pattern>*/dist/*.asset.php</exclude-pattern>
 
   <rule ref="WordPress">
     <!-- Don't enforce long-form array syntax. -->
@@ -86,7 +90,7 @@
   <!-- Warn when there's todo/fixme notations -->
   <rule ref="Generic.Commenting.Todo" />
   <rule ref="Generic.Commenting.Fixme" />
-  <!-- See: McCabes Cyclomatic Complexity -->
+  <!-- See: McCabe's Cyclomatic Complexity -->
   <rule ref="Generic.Metrics.CyclomaticComplexity" />
   <!-- Limit nesting levels to 5. -->
   <rule ref="Generic.Metrics.NestingLevel" />
