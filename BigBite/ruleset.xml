@@ -53,13 +53,13 @@
   <rule ref="WordPress-Extra">
     <!-- Don't enforce long-form array syntax; we use short arrays exclusively. -->
     <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
-    <!-- For consistency, allow a blank line before the class closing brace -->
+    <!-- For consistency, allow a blank line before the class closing brace. -->
     <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
-    <!-- We have our own file name sniff - WP doesn't account for abstract classes -->
+    <!-- We have our own file name sniff - WP doesn't account for abstract classes. -->
     <exclude name="WordPress.Files.FileName" />
-    <!-- Shorthand ternaries can be okay - should be checked at PR review time -->
+    <!-- Shorthand ternaries can be okay - should be checked at PR review time. -->
     <exclude name="Universal.Operators.DisallowShortTernary.Found" />
-    <!-- Don't cause build failures out of spite -->
+    <!-- There are scenarios where this would cause issues. -->
     <exclude name="WordPress.WP.CapitalPDangit.Misspelled" />
   </rule>
 
@@ -70,14 +70,14 @@
   <!-- Additional rules -->
   <!-- ################ -->
 
-  <!-- Disallow closures longer than 5 (warn) or 8 (error) lines long -->
+  <!-- Disallow closures longer than 5 (warn) or 8 (error) lines long. -->
   <rule ref="Universal.FunctionDeclarations.NoLongClosures" />
-  <!-- Enforce non-private, non-abstract methods in traits to be declared as final -->
+  <!-- Enforce non-private, non-abstract methods in traits to be declared as final. -->
   <rule ref="Universal.FunctionDeclarations.RequireFinalMethodsInTraits" />
-  <!-- Enforce the use of the boolean && and || operators instead of the logical and/or operators -->
+  <!-- Enforce the use of the boolean && and || operators instead of the logical and/or operators. -->
   <rule ref="Universal.Operators.DisallowLogicalAndOr" />
 
-  <!-- Warn about unused function parameters -->
+  <!-- Warn about unused function parameters. -->
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
     <!-- Except under circumstances in which they make sense. -->
     <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed" />
@@ -85,7 +85,7 @@
     <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterfaceAfterLastUsed" />
     <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterfaceBeforeLastUsed" />
   </rule>
-  <!-- Include documentation sniff from WordPress-Docs -->
+  <!-- Check block comments for conformity.. -->
   <rule ref="Generic.Commenting.DocComment">
     <!-- Allow other tags to come before @param comments - @see, @link, etc. -->
     <exclude name="Generic.Commenting.DocComment.ParamNotFirst" />
@@ -112,20 +112,24 @@
   <!-- Check that the closing braces of scopes are aligned correctly. -->
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace" />
 
-  <!-- Include documentation sniffs from WordPress-Docs. -->
+  <!-- Check block comments for conformity. -->
   <rule ref="Squiz.Commenting.BlockComment">
     <!-- We do not like empty lines after block comments. -->
     <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter" />
     <!-- Allow for /* translators: ... */ comments. -->
     <exclude name="Squiz.Commenting.BlockComment.SingleLine" />
-    <!-- Uses spaces for indentation. -->
+    <!-- These sniff codes use spaces for indentation. -->
     <exclude name="Squiz.Commenting.BlockComment.FirstLineIndent" />
     <exclude name="Squiz.Commenting.BlockComment.LineIndent" />
     <exclude name="Squiz.Commenting.BlockComment.LastLineIndent" />
   </rule>
+  <!-- Check class comments for conformity. -->
   <rule ref="Squiz.Commenting.ClassComment" />
+  <!-- Check block comment alignment. -->
   <rule ref="Squiz.Commenting.DocCommentAlignment" />
+  <!-- Enforce explanatory comments for empty catch statements. -->
   <rule ref="Squiz.Commenting.EmptyCatchComment" />
+  <!-- Check function comments for conformity. -->
   <rule ref="Squiz.Commenting.FunctionComment">
     <!-- We prefer shorthand int/bool over integer/boolean. -->
     <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName" />
@@ -135,7 +139,9 @@
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop" />
     <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital" />
   </rule>
+  <!-- Enforce comments for @throws tags. -->
   <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
+  <!-- Check inline comments for conformity. -->
   <rule ref="Squiz.Commenting.InlineComment">
     <!-- Allow inline docblocks. -->
     <exclude name="Squiz.Commenting.InlineComment.DocBlock" />
@@ -144,7 +150,9 @@
     <!-- Allow "translators:" comments. -->
     <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
   </rule>
+  <!-- Disallow post-statement comments. -->
   <rule ref="Squiz.Commenting.PostStatementComment" />
+  <!-- Check variable comments for conformity. -->
   <rule ref="Squiz.Commenting.VariableComment">
     <!-- We prefer shorthand int/bool over integer/boolean. -->
     <exclude name="Squiz.Commenting.VariableComment.IncorrectVarType" />
