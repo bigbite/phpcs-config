@@ -122,6 +122,8 @@
     <exclude name="Squiz.Commenting.BlockComment.FirstLineIndent" />
     <exclude name="Squiz.Commenting.BlockComment.LineIndent" />
     <exclude name="Squiz.Commenting.BlockComment.LastLineIndent" />
+    <!-- We expect block comments to start with /** (instead of /*). -->
+    <exclude name="Squiz.Commenting.BlockComment.WrongStart" />
   </rule>
   <!-- Check class comments for conformity. -->
   <rule ref="Squiz.Commenting.ClassComment" />
