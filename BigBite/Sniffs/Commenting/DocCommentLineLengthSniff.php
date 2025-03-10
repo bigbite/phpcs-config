@@ -43,6 +43,13 @@ final class DocCommentLineLengthSniff implements Sniff {
 	public $absoluteLineLimit = 100;
 
 	/**
+	 * Whether to include the indentation level in the calculation.
+	 *
+	 * @var bool
+	 */
+	public $includeIndentation = false;
+
+	/**
 	 * Returns an array of tokens this test wants to listen for.
 	 *
 	 * @return array<int,string>
@@ -95,7 +102,10 @@ final class DocCommentLineLengthSniff implements Sniff {
 				continue;
 			}
 
-			$lineLength = ( $tokens[ $i ]['column'] + $tokens[ $i ]['length'] - 1 );
+			$lineLength = $tokens[ $i ]['length'];
+			if ( true === $this->includeIndentation ) {
+				$lineLength = ( $tokens[ $i ]['column'] + $tokens[ $i ]['length'] - 1 );
+			}
 
 			// Record metrics.
 			if ( $lineLength <= $this->lineLimit ) {

@@ -31,3 +31,7 @@
 /**
  * This is a comment line that should not trigger a warning, nor an error.
  */
+
+                          /**
+                          * This is a comment line that should not trigger a warning, nor an error.
+                          */
