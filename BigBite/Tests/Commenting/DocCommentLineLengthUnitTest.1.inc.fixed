@@ -27,3 +27,7 @@
  * Theme Name: Line lengths
  * Description: WordPress plugin/theme comment line lengths are excluded from this sniff, both soft limit and hard limit.
  */
+
+/**
+ * This is a comment line that should not trigger a warning, nor an error.
+ */
