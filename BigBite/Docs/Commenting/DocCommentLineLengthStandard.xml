@@ -1,0 +1,49 @@
+<documentation title="Doc Comment Line Length">
+  <standard>
+  <![CDATA[
+  Block comments should not be longer than a set length (default 80 characters), and must not exceed an absolute length (default 100 characters).
+  ]]>
+  </standard>
+  <standard>
+  <![CDATA[
+  Block comment line length should not exceed 80 characters.
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: Comment line is shorter than 80 characters.">
+    <![CDATA[
+/**
+ * <em>This is an example of a comment line that does not exceed 80 characters.</em>
+ */
+    ]]>
+    </code>
+    <code title="Invalid: Comment line is longer than 80 characters.">
+    <![CDATA[
+/**
+ * <em>This is an example of a comment line that does exceed the soft maximum of 80 characters.</em>
+ */
+    ]]>
+    </code>
+  </code_comparison>
+  <standard>
+  <![CDATA[
+  Block comment line length must not exceed 100 characters.
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: Comment line is longer than 80 characters, but shorter than 100.">
+    <![CDATA[
+/**
+ * <em>This is an example of a comment line that does not exceed the maximum of 100 characters.</em>
+ */
+    ]]>
+    </code>
+    <code title="Invalid: Comment line is longer than 100 characters.">
+    <![CDATA[
+/**
+ * <em>This is an example of a comment line that does exceed the hard maximum of 100 characters, which is a no-no.</em>
+ */
+    ]]>
+    </code>
+  </code_comparison>
+</documentation>
