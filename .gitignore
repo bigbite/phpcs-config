@@ -1,3 +1,4 @@
+.DS_Store
 composer.phar
 .vscode/
 .phpunit.result.cache

@@ -11,7 +11,8 @@
         "automattic/vipwpcs": "^3.0",
         "php": ">=7.2",
         "phpcsstandards/phpcsutils": "^1.0.8",
-        "phpcsstandards/phpcsextra": "^1.1"
+        "phpcsstandards/phpcsextra": "^1.1",
+        "slevomat/coding-standard": "^8.16"
     },
     "require-dev": {
         "phpcsstandards/phpcsdevtools": "^1.1.0",
