@@ -50,6 +50,10 @@ final class DocCommentLineLengthUnitTest extends AbstractSniffUnitTest {
 				return array(
 					15 => 1,
 				);
+			case 'DocCommentLineLengthUnitTest.3.inc':
+				return array(
+					11 => 1,
+				);
 			default:
 				return array();
 		}
@@ -74,6 +78,10 @@ final class DocCommentLineLengthUnitTest extends AbstractSniffUnitTest {
 			case 'DocCommentLineLengthUnitTest.2.inc':
 				return array(
 					11 => 1,
+				);
+			case 'DocCommentLineLengthUnitTest.3.inc':
+				return array(
+					7 => 1,
 				);
 			default:
 				return array();
