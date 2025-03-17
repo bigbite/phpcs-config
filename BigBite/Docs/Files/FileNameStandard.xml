@@ -1,11 +1,12 @@
 <documentation title="File Names">
   <standard>
   <![CDATA[
-  Files containing classes, interfaces, or traits should be prefixed appropriately - prefixed with the type, and then lower-kebab-case matching the name of the type. Examples:
+  Files containing classes, interfaces, traits, or enums should be prefixed appropriately - prefixed with the type, and then lower-kebab-case matching the name of the type. Examples:
   - trait My_Trait {} => trait-my-trait.php
   - interface My_Interface {} => interface-my-interface.php
   - class My_Class {} => class-my-class.php
   - abstract class My_Abstract_Class {} => abstract-class-my-abstract-class.php
+  - enum My_Enum {} => enum-my-enum.php
   ]]>
   </standard>
 </documentation>

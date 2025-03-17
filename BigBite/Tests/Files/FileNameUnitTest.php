@@ -48,6 +48,8 @@ final class FileNameUnitTest extends AbstractSniffUnitTest {
 		'ClassMyClass.inc'                           => 1,
 		'InterfaceMyInterface.inc'                   => 1,
 		'TraitMyTrait.inc'                           => 1,
+		'enum-different-enum.inc'                    => 1,
+		'EnumMyEnum.inc'                             => 1,
 
 		// Theme specific exceptions in a non-theme context.
 		'single-my_post_type.inc'                    => 1,
@@ -62,6 +64,7 @@ final class FileNameUnitTest extends AbstractSniffUnitTest {
 		'ClassNonStrictClass.inc'                    => 1,
 		'InterfaceNonStrictClass.inc'                => 1,
 		'TraitNonStrictClass.inc'                    => 1,
+		'EnumNonStrictEnum.inc'                      => 1,
 
 		/*
 		 * In /FileNameUnitTests/PHPCSAnnotations.

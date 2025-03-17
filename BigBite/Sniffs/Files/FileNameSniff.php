@@ -158,6 +158,12 @@ final class FileNameSniff extends Sniff {
 		$trait_ptr     = $this->phpcsFile->findNext( \T_TRAIT, $stack_ptr );
 		$interface_ptr = $this->phpcsFile->findNext( \T_INTERFACE, $stack_ptr );
 
+		$enum_ptr = false;
+		// Since PHP 8.1.
+		if ( defined( '\T_ENUM' ) ) {
+			$enum_ptr = $this->phpcsFile->findNext( \T_ENUM, $stack_ptr );
+		}
+
 		if ( false !== $class_ptr && $this->is_test_class( $this->phpcsFile, $class_ptr ) ) {
 			/*
 			 * This rule should not be applied to test classes (at all).
@@ -173,7 +179,7 @@ final class FileNameSniff extends Sniff {
 		$file_name = basename( $file );
 
 		// plain file, just check hyphenation.
-		if ( ! $class_ptr && ! $trait_ptr && ! $interface_ptr ) {
+		if ( ! $class_ptr && ! $trait_ptr && ! $interface_ptr && ! $enum_ptr ) {
 			$this->check_filename_is_hyphenated( $file_name );
 			return ( $this->phpcsFile->numTokens + 1 );
 		}
@@ -202,10 +208,10 @@ final class FileNameSniff extends Sniff {
 			return ( $this->phpcsFile->numTokens + 1 );
 		}
 
-		$is_wpinc_path = false !== strpos( $file, \DIRECTORY_SEPARATOR . 'wp-includes' . \DIRECTORY_SEPARATOR );
-
-		if ( $is_wpinc_path && false === $class_ptr ) {
-			$this->check_filename_for_template_suffix( $stack_ptr, $file_name );
+		// check for "enum-" prefix.
+		if ( false !== $enum_ptr ) {
+			$this->check_filename_has_enum_prefix( $enum_ptr, $file_name );
+			return ( $this->phpcsFile->numTokens + 1 );
 		}
 
 		// Only run this sniff once per file, no need to run it again.
@@ -365,43 +371,27 @@ final class FileNameSniff extends Sniff {
 	}
 
 	/**
-	 * Check non-class files in "wp-includes" with a "@subpackage Template" tag for a "-template" suffix.
+	 * Check files containing an enum for the "enum-" prefix,
+	 * and that the rest of the file name reflects the enum name.
 	 *
-	 * @since 3.0.0
+	 * @param mixed  $enum_ptr  the token stack.
+	 * @param string $file_name the name of the file.
 	 *
-	 * @param int    $stackPtr  Stack pointer to the first PHP open tag in the file.
-	 * @param string $file_name The name of the current file.
-	 *
-	 * @return void
+	 * @return bool
 	 */
-	protected function check_filename_for_template_suffix( $stackPtr, $file_name ) {
-		$subpackage_tag = $this->phpcsFile->findNext( \T_DOC_COMMENT_TAG, $stackPtr, null, false, '@subpackage' );
-		if ( false === $subpackage_tag ) {
-			return;
+	protected function check_filename_has_enum_prefix( $enum_ptr, $file_name ) {
+		$extension   = strrchr( $file_name, '.' );
+		$enum_name   = ObjectDeclarations::getName( $this->phpcsFile, $enum_ptr );
+		$expected    = 'enum-' . $this->kebab( $enum_name ) . $extension;
+		$err_message = 'Enum file names should be based on the enum name with "enum-" prepended. Expected %s, but found %s.';
+
+		if ( $file_name === $expected ) {
+			return true;
 		}
 
-		$subpackage = $this->phpcsFile->findNext( \T_DOC_COMMENT_STRING, $subpackage_tag );
-		if ( false === $subpackage ) {
-			return;
-		}
+		$this->phpcsFile->addError( $err_message, 0, 'InvalidEnumFileName', array( $expected, $file_name ) );
 
-		$fileName_end = substr( $file_name, -13 );
-
-		if ( ( 'Template' === trim( $this->tokens[ $subpackage ]['content'] )
-			&& $this->tokens[ $subpackage_tag ]['line'] === $this->tokens[ $subpackage ]['line'] )
-			&& ( ( ! \defined( '\PHP_CODESNIFFER_IN_TESTS' ) && '-template.php' !== $fileName_end )
-			|| ( \defined( '\PHP_CODESNIFFER_IN_TESTS' ) && '-template.inc' !== $fileName_end ) )
-		) {
-			$this->phpcsFile->addError(
-				'Files containing template tags should have "-template" appended to the end of the file name. Expected %s, but found %s.',
-				0,
-				'InvalidTemplateTagFileName',
-				array(
-					substr( $file_name, 0, -4 ) . '-template.php',
-					$file_name,
-				)
-			);
-		}
+		return false;
 	}
 
 	/**
