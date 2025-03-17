@@ -7,7 +7,7 @@
   <code_comparison>
     <code title="Valid: Class implementing __toString implements the Stringable interface.">
     <![CDATA[
-class Foo<em>implements Stringable</em> {
+class Foo<em> implements Stringable</em> {
   public function __toString(): string {
     return __CLASS__;
   }
