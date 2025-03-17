@@ -53,12 +53,14 @@
   <rule ref="WordPress-Extra">
     <!-- Don't enforce long-form array syntax; we use short arrays exclusively. -->
     <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
-    <!-- For consistency, allow a blank line before the class closing brace. -->
-    <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
-    <!-- We have our own file name sniff - WP doesn't account for abstract classes. -->
-    <exclude name="WordPress.Files.FileName" />
     <!-- Shorthand ternaries can be okay - should be checked at PR review time. -->
     <exclude name="Universal.Operators.DisallowShortTernary.Found" />
+    <!-- For consistency, allow a blank line before the class closing brace. -->
+    <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
+    <!-- We prefer +=/-= over ++/\-\-. -->
+    <exclude name="Squiz.Operators.IncrementDecrementUsage" />
+    <!-- We have our own file name sniff - WP doesn't account for abstract classes. -->
+    <exclude name="WordPress.Files.FileName" />
     <!-- There are scenarios where this would cause issues. -->
     <exclude name="WordPress.WP.CapitalPDangit.Misspelled" />
   </rule>
@@ -221,4 +223,26 @@
     <!-- Allow a blank line before the first use statement within a class. -->
     <exclude name="PSR12.Traits.UseDeclaration.UseAfterBrace" />
   </rule>
+  <!-- Use statements must be listed A-Z. -->
+  <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses" />
+  <!-- Disallow use of grouping ({}) in use statements. -->
+  <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse" />
+  <!-- Disallow unused use statements. -->
+  <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses" />
+  <!-- Disallow loose equality operators. -->
+  <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators" />
+  <!-- Prefer +=/-= over ++/\-\-. -->
+  <rule ref="SlevomatCodingStandard.Operators.DisallowIncrementAndDecrementOperators" />
+  <!-- Prefer generic over array style for type hints (e.g. array<int> over int[]). -->
+  <rule ref="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax" />
+  <!-- Prefer shorthand scalar type hints in docblocks. -->
+  <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
+  <!-- Check that type hints are nullable when default value is null. -->
+  <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
+  <!-- Disallow variable variables ($$foo). -->
+  <rule ref="SlevomatCodingStandard.Variables.DisallowVariableVariable" />
+  <!-- Disallow unused variables. -->
+  <rule ref="SlevomatCodingStandard.Variables.UnusedVariable" />
+  <!-- Disallow useless variables. -->
+  <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
 </ruleset>
