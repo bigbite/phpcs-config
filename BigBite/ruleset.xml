@@ -79,6 +79,8 @@
   <!-- Enforce the use of the boolean && and || operators instead of the logical and/or operators. -->
   <rule ref="Universal.Operators.DisallowLogicalAndOr" />
 
+  <!-- Shorthand array syntax is preferred. -->
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
   <!-- Warn about unused function parameters. -->
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
     <!-- Except under circumstances in which they make sense. -->
