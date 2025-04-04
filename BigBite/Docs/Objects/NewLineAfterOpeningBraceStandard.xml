@@ -1,0 +1,25 @@
+<documentation title="New Line After Opening Brace">
+  <standard>
+  <![CDATA[
+  Object structures should contain one blank newline before the content.
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: one blank line before content.">
+    <![CDATA[
+interface Foo {<em>
+
+</em> public function bar();
+}
+    ]]>
+    </code>
+    <code title="Invalid: no blank linne before content.">
+    <![CDATA[
+interface Foo {<em>
+</em> public function bar();
+}
+
+    ]]>
+    </code>
+  </code_comparison>
+</documentation>
