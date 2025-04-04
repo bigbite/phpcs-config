@@ -1,0 +1,25 @@
+<documentation title="New Line Before Closing Brace">
+  <standard>
+  <![CDATA[
+  Object structures should contain one blank newline before the closing brace.
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: one blank line before closing brace.">
+    <![CDATA[
+interface Foo {
+  public function bar();<em>
+
+</em>}
+    ]]>
+    </code>
+    <code title="Invalid: no blank linne before closing brace.">
+    <![CDATA[
+interface Foo {
+  public function bar();<em>
+</em>}
+
+    ]]>
+    </code>
+  </code_comparison>
+</documentation>
