@@ -1,0 +1,29 @@
+<documentation title="Heredoc">
+    <standard>
+    <![CDATA[
+    Heredoc syntax is disallowed.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Using standard string interpolation or sprintf.">
+        <![CDATA[
+$text = "some $text";
+
+
+$text = sprintf( 'some %s', $text );
+
+
+        ]]>
+        </code>
+        <code title="Invalid: Using heredoc syntax.">
+        <![CDATA[
+$text = <em><<<EOD
+some $text
+EOD</em>;
+$text2 = <em><<<EOL
+some $text
+EOL</em>;
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>
