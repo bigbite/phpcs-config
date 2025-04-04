@@ -1,0 +1,27 @@
+<documentation title="Stringable">
+  <standard>
+  <![CDATA[
+  Classes that implement the "__toString" magic method should implement the Stringable interface.
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: Class implementing __toString implements the Stringable interface.">
+    <![CDATA[
+class Foo<em> implements Stringable</em> {
+  public function __toString(): string {
+    return __CLASS__;
+  }
+}
+    ]]>
+    </code>
+    <code title="Invalid: Class implementing __toString doesn't implement the Stringable interface.">
+    <![CDATA[
+class Foo<em></em> {
+  public function __toString(): string {
+    return __CLASS__;
+  }
+}
+    ]]>
+    </code>
+  </code_comparison>
+</documentation>
