@@ -199,14 +199,6 @@
   <rule ref="PSR12.Classes.ClosingBrace" />
   <!-- Ensure boolean operators are consistently placed. -->
   <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement" />
-  <!-- Validate declare statements. -->
-  <rule ref="PSR12.Files.DeclareStatement">
-    <!-- Don't error with spacing between parens or operators. -->
-    <exclude name="PSR12.Files.DeclareStatement.SpaceFoundAfterDirective" />
-    <exclude name="PSR12.Files.DeclareStatement.SpaceFoundAfterDirectiveValue" />
-    <exclude name="PSR12.Files.DeclareStatement.SpaceFoundBeforeDirective" />
-    <exclude name="PSR12.Files.DeclareStatement.SpaceFoundBeforeDirectiveValue" />
-  </rule>
   <!-- Validate format of file headers (when present). -->
   <rule ref="PSR12.Files.FileHeader">
     <!-- Disable assumption that the first comment in a file is a file comment. -->
