@@ -62,6 +62,7 @@ final class DeclareStatementSniff implements Sniff {
 			return;
 		}
 
+		$this->process_keyword( $phpcsFile, $stackPtr, $tokens );
 		$this->process_after_keyword( $phpcsFile, $stackPtr, $tokens );
 		$this->process_after_open_paren( $phpcsFile, $stackPtr, $tokens );
 		$this->process_directive( $phpcsFile, $stackPtr, $tokens );
@@ -71,6 +72,36 @@ final class DeclareStatementSniff implements Sniff {
 		$this->process_before_directive_value( $phpcsFile, $stackPtr, $tokens );
 		$this->process_after_directive_value( $phpcsFile, $stackPtr, $tokens );
 		$this->process_after_close_paren( $phpcsFile, $stackPtr, $tokens );
+	}
+
+	/**
+	 * Check that the declare keyword is lowercase.
+	 *
+	 * @param \PHP_CodeSniffer\Files\File    $phpcsFile The file being scanned.
+	 * @param int                            $stackPtr  The position of the current token in
+	 *                                                  the stack passed in $tokens.
+	 * @param array<int,array<string,mixed>> $tokens    All found tokens in the file.
+	 *
+	 * @return void
+	 */
+	protected function process_keyword( File $phpcsFile, $stackPtr, array $tokens ) {
+		$keyword = $tokens[ $stackPtr ];
+
+		// It conforms.
+		if ( strtolower( $keyword['content'] ) === $keyword['content'] ) {
+			return;
+		}
+
+		$error = 'Declare keyword should be in lower case; found "%s".';
+		$fix   = $phpcsFile->addFixableError( $error, $stackPtr, 'KeywordCasing', array( $keyword['content'] ) );
+
+		if ( true !== $fix ) {
+			return;
+		}
+
+		$phpcsFile->fixer->beginChangeset();
+		$phpcsFile->fixer->replaceToken( $stackPtr, 'declare' );
+		$phpcsFile->fixer->endChangeset();
 	}
 
 	/**

@@ -1,4 +1,4 @@
-<?php
+<?php // Important Note: save this file without formatting!!
 declare/* comment */(ticks=1);
 declare   (ticks=2);
 declare(   ticks=3);
@@ -58,3 +58,6 @@ declare(ticks=25) {  $foo = false;
 }
 
 declare( ticks = 26 );
+
+DECLARE( ticks = 27 );
+DeClArE( ticks = 28 );

@@ -2,6 +2,7 @@
   <standard>
   <![CDATA[
   Declare statements should be formatted in the following way:
+  - the declare keyword should be lower case
   - no space between the keyword and opening parenthesis
   - one space after the opening parenthesis
   - one space before the equals sign

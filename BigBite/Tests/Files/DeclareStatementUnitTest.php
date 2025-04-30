@@ -63,6 +63,8 @@ final class DeclareStatementUnitTest extends AbstractSniffUnitTest {
 					55 => 1,
 					57 => 5,
 					60 => 0,
+					62 => 1,
+					63 => 1,
 				);
 			case 'DeclareStatementUnitTest.2.inc':
 				return array();
