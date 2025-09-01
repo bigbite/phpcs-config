@@ -1,0 +1,65 @@
+<documentation title="Declare Statements">
+  <standard>
+  <![CDATA[
+  Declare statements should be formatted in the following way:
+  - the declare keyword should be lower case
+  - no space between the keyword and opening parenthesis
+  - one space after the opening parenthesis
+  - one space before the equals sign
+  - one space after the equals sign
+  - one space before the closing parenthesis
+  - no space between the closing parenthesis and terminating semi-colon
+  - one space between the closing parenthesis and opening curly brace in a block declaration
+  - the opening curly brace should be the last content on the line
+  - the closing curly brace in a block declaration should be on a new line
+  - the closing curly brace should be column-aligned with the declare keyword
+  - the only supported directives are "ticks", "strict_types", or "encoding"
+  ]]>
+  </standard>
+  <code_comparison>
+    <code title="Valid: Correct spacing.">
+    <![CDATA[
+declare<em></em>(<em> </em>strict_types<em> </em>=<em> </em>1<em> </em>)<em></em>;
+declare(<em> </em>strict_types = 1<em> </em>);
+
+
+    ]]>
+    </code>
+    <code title="Invalid: Incorrect spacing.">
+    <![CDATA[
+declare<em> </em>(<em></em>strict_types<em>  </em>=<em></em>1<em></em>)<em> </em>;
+declare(<em>
+  </em>strict_types = 1<em>
+</em>);
+    ]]>
+    </code>
+  </code_comparison>
+  <code_comparison>
+    <code title="Valid: Correct directive.">
+    <![CDATA[
+declare( <em>strict_types</em> = 1 );
+    ]]>
+    </code>
+    <code title="Invalid: Invalid directive.">
+    <![CDATA[
+declare( <em>struct_types</em> = 1 );
+    ]]>
+    </code>
+  </code_comparison>
+  <code_comparison>
+    <code title="Valid: Correct braces spacing and alignment in block declaration.">
+    <![CDATA[
+declare( ticks = 1 )<em> </em>{
+  // code here.
+<em></em>}
+    ]]>
+    </code>
+    <code title="Invalid: Incorrect braces spacing and alignment in block declaration.">
+    <![CDATA[
+declare( ticks = 1 )<em>  </em>{
+  // code here.
+<em>  </em>}
+    ]]>
+    </code>
+  </code_comparison>
+</documentation>
