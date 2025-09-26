@@ -52,11 +52,13 @@ final class DocCommentLineLengthSniff implements Sniff {
 	/**
 	 * Specific comment prefixes to ignore.
 	 *
+	 * If a comment line begins with any of these prefixes,
+	 * the line length calculations should be skipped for that line.
+	 *
 	 * @var array<int,string>
 	 */
 	public $descriptorsToIgnore = array(
-		'Plugin Name:',
-		'Theme Name:',
+		'Description:',
 	);
 
 	/**
@@ -116,6 +118,12 @@ final class DocCommentLineLengthSniff implements Sniff {
 
 			if ( \T_DOC_COMMENT_STRING !== $tokens[ $i ]['code'] ) {
 				continue;
+			}
+
+			foreach ( $this->descriptorsToIgnore as $ignoreThisPrefix ) {
+				if ( 0 === strpos( $tokens[ $i ]['content'], $ignoreThisPrefix ) ) {
+					continue 2;
+				}
 			}
 
 			$isAParameterDescription = false;

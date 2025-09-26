@@ -45,7 +45,7 @@ final class DocCommentLineLengthUnitTest extends AbstractSniffUnitTest {
 			case 'DocCommentLineLengthUnitTest.1.inc':
 				return array(
 					8  => 1,
-					45 => 1,
+					39 => 1,
 				);
 			case 'DocCommentLineLengthUnitTest.2.inc':
 				return array(
@@ -75,7 +75,7 @@ final class DocCommentLineLengthUnitTest extends AbstractSniffUnitTest {
 			case 'DocCommentLineLengthUnitTest.1.inc':
 				return array(
 					4  => 1,
-					38 => 1,
+					32 => 1,
 				);
 			case 'DocCommentLineLengthUnitTest.2.inc':
 				return array(
