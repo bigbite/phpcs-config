@@ -50,6 +50,16 @@ final class DocCommentLineLengthSniff implements Sniff {
 	public $includeIndentation = false;
 
 	/**
+	 * Specific comment prefixes to ignore.
+	 *
+	 * @var array<int,string>
+	 */
+	public $descriptorsToIgnore = array(
+		'Plugin Name:',
+		'Theme Name:',
+	);
+
+	/**
 	 * Returns an array of tokens this test wants to listen for.
 	 *
 	 * @return array<int,string>
@@ -92,19 +102,51 @@ final class DocCommentLineLengthSniff implements Sniff {
 			return;
 		}
 
-		if ( 1 === preg_match( '/^(Plugin|Theme)\s+Name:/i', $tokens[ $short ]['content'] ) ) {
-			// It's a WordPress plugin or theme, so disregard line length.
-			return;
+		foreach ( $this->descriptorsToIgnore as $descriptor ) {
+			// It's an ignored comment, so disregard line length.
+			if ( 0 === strpos( $tokens[ $short ]['content'], $descriptor ) ) {
+				return;
+			}
 		}
 
 		for ( $i = ( $commentStart + 1 ); $i < $commentEnd; $i++ ) {
+			if ( in_array( $tokens[ $i ]['type'], array( 'T_DOC_COMMENT_WHITESPACE', 'T_DOC_COMMENT_STAR' ), true ) ) {
+				continue;
+			}
+
 			if ( \T_DOC_COMMENT_STRING !== $tokens[ $i ]['code'] ) {
 				continue;
 			}
 
+			$isAParameterDescription = false;
+
 			$lineLength = $tokens[ $i ]['length'];
 			if ( true === $this->includeIndentation ) {
 				$lineLength = ( $tokens[ $i ]['column'] + $tokens[ $i ]['length'] - 1 );
+			}
+
+			// The line is over the limit, but it's a param comment.
+			// See if it's reasonable to split - most of the length could be the type hint, which we should allow.
+			if ( $lineLength > $this->lineLimit ) {
+				$parameterToken = $phpcsFile->findPrevious( \T_DOC_COMMENT_TAG, $i );
+				$itIsAParameter = false !== $parameterToken && $tokens[ $parameterToken ]['line'] === $tokens[ $i ]['line'];
+				$itMatchesRegex = 1 === preg_match( '/^(.+)\s+(\$[a-zA-Z_]+)\s+(.+)$/', $tokens[ $i ]['content'], $lineContent );
+
+				// Split the content into parts.
+				if ( $itIsAParameter && $itMatchesRegex ) {
+					list( /* $fullMatch */, /* $typehint */, /* $paramName */, $description ) = $lineContent;
+
+					$descriptionLength = strlen( $description );
+					// We only need to flag it if the description alone is greater than the line limit.
+					if ( $descriptionLength <= $this->lineLimit ) {
+						$phpcsFile->recordMetric( $i, 'Line length', "{$this->lineLimit} or less" );
+						continue;
+					}
+
+					$lineLength = $descriptionLength;
+
+					$isAParameterDescription = true;
+				}
 			}
 
 			// Record metrics.
@@ -144,6 +186,11 @@ final class DocCommentLineLengthSniff implements Sniff {
 				);
 
 				$error = 'Line exceeds maximum limit of %s characters; contains %s characters';
+
+				if ( $isAParameterDescription ) {
+					$error = 'Parameter description exceeds maximum limit of %s characters; contains %s characters';
+				}
+
 				$phpcsFile->addError( $error, $i, 'MaxExceeded', $data );
 			} elseif ( $lineLength > $this->lineLimit ) {
 				$data = array(
@@ -152,6 +199,11 @@ final class DocCommentLineLengthSniff implements Sniff {
 				);
 
 				$warning = 'Line exceeds %s characters; contains %s characters';
+
+				if ( $isAParameterDescription ) {
+					$warning = 'Parameter description exceeds %s characters; contains %s characters';
+				}
+
 				$phpcsFile->addWarning( $warning, $i, 'TooLong', $data );
 			}
 		}
