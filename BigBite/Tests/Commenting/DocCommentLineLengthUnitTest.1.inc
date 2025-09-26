@@ -17,13 +17,7 @@
  */
 
 /**
- * Plugin Name: Line lengths
- * Description: WordPress plugin/theme comment line lengths are excluded from this sniff.
- */
-
-/**
- * Theme Name: Line lengths
- * Description: WordPress plugin/theme comment line lengths are excluded from this sniff, both soft limit and hard limit.
+ * Description: comment lines that begin with the "Description:" prefix are excluded from this sniff, both soft limit and hard limit.
  */
 
 /**
