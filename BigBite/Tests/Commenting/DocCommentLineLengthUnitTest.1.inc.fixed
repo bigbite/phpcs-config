@@ -35,3 +35,17 @@
                           /**
                           * This is a comment line that should not trigger a warning, nor an error.
                           */
+
+/**
+ * This is a function docblock, and the first line of it is really long, so it should trigger an error.
+ *
+ * However, it also includes a really long parameter type hint,
+ * which should not trigger an error, despite its line length.
+ * Sometimes type hints are just really long.
+ *
+ * @param array<int,array<string,array<int,array<int,int>>>> $reallyLongParamName This is a description of the param.
+ * @param array<int,string>                                  $anotherParamName    This is a description of the param that exceeds the minimum line length even when disregarding the
+ *                                                                                type hint and parameter name from the length calculation.
+ *
+ * @return void
+ */
