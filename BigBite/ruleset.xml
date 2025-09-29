@@ -52,9 +52,9 @@
   <!-- Use all of WP's ruleset, barring docs, and other rules that don't make sense for us. -->
   <rule ref="WordPress-Extra">
     <!-- Don't enforce long-form array syntax; we use short arrays exclusively. -->
-    <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+    <exclude name="Universal.Arrays.DisallowShortArraySyntax" />
     <!-- Shorthand ternaries can be okay - should be checked at PR review time. -->
-    <exclude name="Universal.Operators.DisallowShortTernary.Found" />
+    <exclude name="Universal.Operators.DisallowShortTernary" />
     <!-- For consistency, allow a blank line before the class closing brace. -->
     <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
     <!-- We prefer +=/-= over ++/\-\-. -->
@@ -72,10 +72,19 @@
   <!-- Additional rules -->
   <!-- ################ -->
 
+  <!-- Disallow dirname( __FILE__ ) and nested dirname() calls. -->
+  <rule ref="Modernize.FunctionCalls.Dirname" />
+
+  <!-- Disallow mixing integer and string keys for array items. -->
+  <rule ref="Universal.Arrays.MixedArrayKeyTypes" />
+  <!-- Disallow mixing keyed and unkeyed array items. -->
+  <rule ref="Universal.Arrays.MixedKeyedUnkeyedArray" />
   <!-- Disallow closures longer than 5 (warn) or 8 (error) lines long. -->
   <rule ref="Universal.FunctionDeclarations.NoLongClosures" />
   <!-- Enforce non-private, non-abstract methods in traits to be declared as final. -->
   <rule ref="Universal.FunctionDeclarations.RequireFinalMethodsInTraits" />
+  <!-- Enforce alphabetical sorting for extends/implements names. -->
+  <rule ref="Universal.OOStructures.AlphabeticExtendsImplements" />
   <!-- Enforce the use of the boolean && and || operators instead of the logical and/or operators. -->
   <rule ref="Universal.Operators.DisallowLogicalAndOr" />
 
