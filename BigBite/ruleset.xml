@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="BigBite" namespace="BigBiteCS\BigBite" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="BigBite" namespace="BigBiteCS\BigBite" xsi:noNamespaceSchemaLocation="https://schema.phpcodesniffer.com/phpcs.xsd">
   <config name="encoding" value="utf-8" />
   <config name="testVersion" value="7.4-" />
 
@@ -68,6 +68,9 @@
   <!-- Use all of WP VIP's ruleset. -->
   <rule ref="WordPress-VIP-Go" />
 
+  <!-- Use Big Bite's code documentation ruleset. -->
+  <rule ref="BigBite-Docs" />
+
   <!-- ################ -->
   <!-- Additional rules -->
   <!-- ################ -->
@@ -98,14 +101,7 @@
     <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterfaceAfterLastUsed" />
     <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterfaceBeforeLastUsed" />
   </rule>
-  <!-- Check block comments for conformity.. -->
-  <rule ref="Generic.Commenting.DocComment">
-    <!-- Allow other tags to come before @param comments - @see, @link, etc. -->
-    <exclude name="Generic.Commenting.DocComment.ParamNotFirst" />
-  </rule>
-  <!-- Warn when there's todo/fixme notations -->
-  <rule ref="Generic.Commenting.Todo" />
-  <rule ref="Generic.Commenting.Fixme" />
+
   <!-- See: McCabe's Cyclomatic Complexity -->
   <rule ref="Generic.Metrics.CyclomaticComplexity" />
   <!-- Limit nesting levels to 5. -->
@@ -125,53 +121,6 @@
   <!-- Check that the closing braces of scopes are aligned correctly. -->
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace" />
 
-  <!-- Check block comments for conformity. -->
-  <rule ref="Squiz.Commenting.BlockComment">
-    <!-- We do not like empty lines after block comments. -->
-    <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter" />
-    <!-- Allow for /* translators: ... */ comments. -->
-    <exclude name="Squiz.Commenting.BlockComment.SingleLine" />
-    <!-- These sniff codes use spaces for indentation. -->
-    <exclude name="Squiz.Commenting.BlockComment.FirstLineIndent" />
-    <exclude name="Squiz.Commenting.BlockComment.LineIndent" />
-    <exclude name="Squiz.Commenting.BlockComment.LastLineIndent" />
-    <!-- We expect block comments to start with /** (instead of /*). -->
-    <exclude name="Squiz.Commenting.BlockComment.WrongStart" />
-  </rule>
-  <!-- Check class comments for conformity. -->
-  <rule ref="Squiz.Commenting.ClassComment" />
-  <!-- Check block comment alignment. -->
-  <rule ref="Squiz.Commenting.DocCommentAlignment" />
-  <!-- Enforce explanatory comments for empty catch statements. -->
-  <rule ref="Squiz.Commenting.EmptyCatchComment" />
-  <!-- Check function comments for conformity. -->
-  <rule ref="Squiz.Commenting.FunctionComment">
-    <!-- We prefer shorthand int/bool over integer/boolean. -->
-    <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName" />
-    <exclude name="Squiz.Commenting.FunctionComment.InvalidReturn" />
-    <!-- Be slightly less aggressive about DocBlock formatting. -->
-    <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
-    <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop" />
-    <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital" />
-  </rule>
-  <!-- Enforce comments for @throws tags. -->
-  <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
-  <!-- Check inline comments for conformity. -->
-  <rule ref="Squiz.Commenting.InlineComment">
-    <!-- Allow inline docblocks. -->
-    <exclude name="Squiz.Commenting.InlineComment.DocBlock" />
-    <!-- Don't enforce a period at the end of comments. -->
-    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-    <!-- Allow "translators:" comments. -->
-    <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
-  </rule>
-  <!-- Disallow post-statement comments. -->
-  <rule ref="Squiz.Commenting.PostStatementComment" />
-  <!-- Check variable comments for conformity. -->
-  <rule ref="Squiz.Commenting.VariableComment">
-    <!-- We prefer shorthand int/bool over integer/boolean. -->
-    <exclude name="Squiz.Commenting.VariableComment.IncorrectVarType" />
-  </rule>
   <!-- Force debug output function calls to error. -->
   <rule ref="Squiz.PHP.DiscouragedFunctions">
     <properties>
