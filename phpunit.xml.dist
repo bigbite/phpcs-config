@@ -11,5 +11,8 @@
 		<testsuite name="BigBite">
 			<directory suffix="UnitTest.php">./BigBite/Tests/</directory>
 		</testsuite>
+		<testsuite name="BigBiteDocs">
+			<directory suffix="UnitTest.php">./BigBiteDocs/Tests/</directory>
+		</testsuite>
 	</testsuites>
 </phpunit>

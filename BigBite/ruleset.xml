@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="BigBite" namespace="BigBiteCS\BigBite" xsi:noNamespaceSchemaLocation="https://schema.phpcodesniffer.com/phpcs.xsd">
+<ruleset name="BigBite" namespace="BigBiteCS\BigBite" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpcodesniffer.com/phpcs.xsd">
   <config name="encoding" value="utf-8" />
   <config name="testVersion" value="8.2-" />
 
@@ -71,7 +71,7 @@
   <rule ref="WordPress-VIP-Go" />
 
   <!-- Use Big Bite's code documentation ruleset. -->
-  <rule ref="BigBite-Docs" />
+  <rule ref="BigBiteDocs" />
 
   <!-- ################ -->
   <!-- Additional rules -->

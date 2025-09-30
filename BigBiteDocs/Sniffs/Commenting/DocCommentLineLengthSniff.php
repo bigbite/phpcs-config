@@ -2,12 +2,12 @@
 /**
  * BigBite Coding Standards.
  *
- * @package BigBiteCS\BigBite
+ * @package BigBiteCS\BigBiteDocs
  * @link    https://github.com/bigbite/phpcs-config
  * @license https://opensource.org/licenses/MIT MIT
  */
 
-namespace BigBiteCS\BigBite\Sniffs\Commenting;
+namespace BigBiteCS\BigBiteDocs\Sniffs\Commenting;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
