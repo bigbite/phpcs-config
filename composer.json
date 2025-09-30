@@ -28,7 +28,7 @@
     },
     "prefer-stable" : true,
     "minimum-stability": "dev",
-    "non-feature-branches": ["chore/*", "hotfix/*"],
+    "non-feature-branches": ["chore/*", "hotfix/*", "fix/*"],
     "authors": [
         {
             "name": "Paul Taylor",
@@ -66,16 +66,19 @@
             "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs ."
         ],
         "test": [
-            "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
+            "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php",
+            "@php ./vendor/bin/phpunit --filter BigBiteDocs ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
         ],
 		"analyse": [
 			"./vendor/bin/phpstan"
 		],
         "is-complete": [
-            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite"
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite",
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBiteDocs"
         ],
         "is-complete-strict": [
-            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite"
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBite",
+            "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBiteDocs"
         ],
         "all-checks": [
 			"@lint",

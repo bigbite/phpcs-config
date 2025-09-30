@@ -56,7 +56,8 @@ for that PHPCS install.
 }
 
 $bigbite_standards = array(
-	'BigBite' => true,
+	'BigBite'     => true,
+	'BigBiteDocs' => true,
 );
 
 $all_standards   = PHP_CodeSniffer\Util\Standards::getInstalledStandards();

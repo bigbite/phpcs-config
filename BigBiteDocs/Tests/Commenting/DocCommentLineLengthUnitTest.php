@@ -2,19 +2,19 @@
 /**
  * Unit test class for BigBite Coding Standard.
  *
- * @package BigBiteCS\BigBite
+ * @package BigBiteCS\BigBiteDocs
  * @link    https://github.com/bigbite/phpcs-config
  * @license https://opensource.org/licenses/MIT MIT
  */
 
-namespace BigBiteCS\BigBite\Tests\Commenting;
+namespace BigBiteCS\BigBiteDocs\Tests\Commenting;
 
-use BigBiteCS\BigBite\Tests\AbstractSniffUnitTest;
+use BigBiteCS\BigBiteDocs\Tests\AbstractSniffUnitTest;
 
 /**
  * Unit test class for the DocCommentLineLength sniff.
  *
- * @package BigBiteCS\BigBite
+ * @package BigBiteCS\BigBiteDocs
  */
 final class DocCommentLineLengthUnitTest extends AbstractSniffUnitTest {
 
