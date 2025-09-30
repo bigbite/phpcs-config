@@ -129,7 +129,7 @@ final class FileNameSniff extends Sniff {
 	/**
 	 * Returns an array of tokens this test wants to listen for.
 	 *
-	 * @return array<int,int>
+	 * @return array<int|string,int|string>
 	 */
 	public function register() {
 		if ( \defined( '\PHP_CODESNIFFER_IN_TESTS' ) ) {
@@ -302,9 +302,14 @@ final class FileNameSniff extends Sniff {
 	 * @return bool
 	 */
 	protected function check_filename_has_class_prefix( $class_ptr, $file_name ) {
-		$extension   = strrchr( $file_name, '.' );
-		$class_name  = ObjectDeclarations::getName( $this->phpcsFile, $class_ptr );
-		$properties  = ObjectDeclarations::getClassProperties( $this->phpcsFile, $class_ptr );
+		$extension  = strrchr( $file_name, '.' );
+		$class_name = ObjectDeclarations::getName( $this->phpcsFile, $class_ptr );
+		$properties = ObjectDeclarations::getClassProperties( $this->phpcsFile, $class_ptr );
+
+		if ( null === $class_name ) {
+			return true;
+		}
+
 		$expected    = 'class-' . $this->kebab( $class_name ) . $extension;
 		$err_message = 'Class file names should be based on the class name with "class-" prepended. Expected %s, but found %s.';
 
@@ -332,8 +337,13 @@ final class FileNameSniff extends Sniff {
 	 * @return bool
 	 */
 	protected function check_filename_has_trait_prefix( $trait_ptr, $file_name ) {
-		$extension   = strrchr( $file_name, '.' );
-		$trait_name  = ObjectDeclarations::getName( $this->phpcsFile, $trait_ptr );
+		$extension  = strrchr( $file_name, '.' );
+		$trait_name = ObjectDeclarations::getName( $this->phpcsFile, $trait_ptr );
+
+		if ( null === $trait_name ) {
+			return true;
+		}
+
 		$expected    = 'trait-' . $this->kebab( $trait_name ) . $extension;
 		$err_message = 'Trait file names should be based on the trait name with "trait-" prepended. Expected %s, but found %s.';
 
@@ -358,8 +368,13 @@ final class FileNameSniff extends Sniff {
 	protected function check_filename_has_interface_prefix( $interface_ptr, $file_name ) {
 		$extension      = strrchr( $file_name, '.' );
 		$interface_name = ObjectDeclarations::getName( $this->phpcsFile, $interface_ptr );
-		$expected       = 'interface-' . $this->kebab( $interface_name ) . $extension;
-		$err_message    = 'Interface file names should be based on the interface name with "interface-" prepended. Expected %s, but found %s.';
+
+		if ( null === $interface_name ) {
+			return true;
+		}
+
+		$expected    = 'interface-' . $this->kebab( $interface_name ) . $extension;
+		$err_message = 'Interface file names should be based on the interface name with "interface-" prepended. Expected %s, but found %s.';
 
 		if ( $file_name === $expected ) {
 			return true;
@@ -380,8 +395,13 @@ final class FileNameSniff extends Sniff {
 	 * @return bool
 	 */
 	protected function check_filename_has_enum_prefix( $enum_ptr, $file_name ) {
-		$extension   = strrchr( $file_name, '.' );
-		$enum_name   = ObjectDeclarations::getName( $this->phpcsFile, $enum_ptr );
+		$extension = strrchr( $file_name, '.' );
+		$enum_name = ObjectDeclarations::getName( $this->phpcsFile, $enum_ptr );
+
+		if ( null === $enum_name ) {
+			return true;
+		}
+
 		$expected    = 'enum-' . $this->kebab( $enum_name ) . $extension;
 		$err_message = 'Enum file names should be based on the enum name with "enum-" prepended. Expected %s, but found %s.';
 
@@ -404,6 +424,11 @@ final class FileNameSniff extends Sniff {
 	protected function kebab( $filename = '' ) {
 		$kebab = preg_replace( '`[[:punct:]]`', '-', $filename );
 		$kebab = preg_replace( '/(?>(?!^[A-Z]))([a-z])([A-Z])/', '$1-$2', $filename );
+
+		if ( null === $kebab ) {
+			$kebab = $filename;
+		}
+
 		$kebab = strtolower( $kebab );
 		$kebab = str_replace( '_', '-', $kebab );
 

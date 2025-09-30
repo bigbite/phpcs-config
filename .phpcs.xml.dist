@@ -24,8 +24,8 @@
 	<!-- Strip the filepaths down to the relevant bit. -->
 	<arg name="basepath" value="."/>
 
-	<!-- Check up to 8 files simultaneously. -->
-	<arg name="parallel" value="8"/>
+	<!-- Check up to 10 files simultaneously. -->
+	<arg name="parallel" value="10"/>
 
 	<!--
 	#############################################################################
@@ -55,19 +55,8 @@
 	</rule>
 
 	<!-- Check code for cross-version PHP compatibility. -->
-	<config name="testVersion" value="5.4-"/>
-	<rule ref="PHPCompatibility">
-		<!-- Exclude PHP constants back-filled by PHPCS. -->
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_finallyFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_yieldFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_ellipsisFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_powFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_pow_equalFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_spaceshipFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_coalesceFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_coalesce_equalFound"/>
-		<exclude name="PHPCompatibility.Constants.NewConstants.t_yield_fromFound"/>
-	</rule>
+	<config name="testVersion" value="7.2-"/>
+	<rule ref="PHPCompatibility"/>
 
 	<!-- Enforce PSR1 compatible namespaces. -->
 	<rule ref="PSR1.Classes.ClassDeclaration"/>
