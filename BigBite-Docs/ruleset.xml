@@ -22,7 +22,9 @@
     <exclude name="Squiz.Commenting.BlockComment.WrongStart" />
   </rule>
   <!-- Check class comments for conformity. -->
-  <rule ref="Squiz.Commenting.ClassComment" />
+  <rule ref="Squiz.Commenting.ClassComment">
+    <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed" />
+  </rule>
   <!-- Check block comment alignment. -->
   <rule ref="Squiz.Commenting.DocCommentAlignment" />
   <!-- Enforce explanatory comments for empty catch statements. -->
