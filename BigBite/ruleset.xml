@@ -55,6 +55,8 @@
     <exclude name="Universal.Arrays.DisallowShortArraySyntax" />
     <!-- Shorthand ternaries can be okay - should be checked at PR review time. -->
     <exclude name="Universal.Operators.DisallowShortTernary" />
+    <!-- We prefer post-increment to pre-increment. -->
+    <exclude name="Universal.Operators.DisallowStandalonePostIncrementDecrement" />
     <!-- For consistency, allow a blank line before the class closing brace. -->
     <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
     <!-- We prefer +=/-= over ++/\-\-. -->
