@@ -9,6 +9,7 @@
   <arg name="report-width" value="150" />
   <arg name="tab-width" value="4" />
   <arg name="cache" />
+  <arg name="colors" />
   <arg value="qs" />
 
   <exclude-pattern>*/.git/*</exclude-pattern>
