@@ -3,7 +3,7 @@
 class DoesNotImplementToStringMagicMethod {
 }
 
-class CorrectlyImplementsStringable implements Stringable {
+class CorrectlyImplementsStringable implements \Stringable {
   public function __toString(): string {
     return __CLASS__;
   }

@@ -67,7 +67,12 @@ final class StringableSniff implements Sniff {
 		$interfaces = ObjectDeclarations::findImplementedInterfaceNames( $phpcsFile, $classDecl );
 
 		// we're good - class containing __toString implements the interface.
-		if ( is_array( $interfaces ) && in_array( 'Stringable', $interfaces, true ) ) {
+		if (
+			is_array( $interfaces ) && (
+				in_array( '\\Stringable', $interfaces, true ) ||
+				in_array( 'Stringable', $interfaces, true )
+			)
+		) {
 			return;
 		}
 
@@ -88,7 +93,7 @@ final class StringableSniff implements Sniff {
 			}
 
 			$phpcsFile->fixer->beginChangeset();
-			$phpcsFile->fixer->addContent( $prevToken, ' implements Stringable' );
+			$phpcsFile->fixer->addContent( $prevToken, ' implements \\Stringable' );
 			$phpcsFile->fixer->endChangeset();
 
 			return;
@@ -101,7 +106,7 @@ final class StringableSniff implements Sniff {
 		}
 
 		$phpcsFile->fixer->beginChangeset();
-		$phpcsFile->fixer->addContentBefore( $endOfLine, ' implements Stringable' );
+		$phpcsFile->fixer->addContentBefore( $endOfLine, ' implements \\Stringable' );
 		$phpcsFile->fixer->endChangeset();
 	}
 }
