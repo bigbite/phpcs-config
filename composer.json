@@ -2,7 +2,7 @@
     "name": "bigbite/phpcs-config",
     "type": "phpcodesniffer-standard",
     "description": "Big Bite's PHP Coding Standards.",
-	"keywords": ["phpcs", "standards", "static analysis"],
+    "keywords": ["phpcs", "standards", "static analysis"],
     "license": "MIT",
     "require": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
@@ -41,18 +41,25 @@
     ],
     "archive": {
         "exclude": [
+            "/.github",
+            "/BigBite/Tests",
+            "/BigBiteDocs/Tests",
+            "/Tests",
             "/.editorconfig",
+            "/.gitattributes",
             "/.gitignore",
             "/.phpcs.xml.dist",
-            "/Tests",
+            "/.travis.yml",
+            "/phpstan.neon",
             "/phpunit.xml.dist"
         ]
     },
     "scripts-descriptions": {
         "lint": "Runs PHP syntax error checks",
         "phpcs": "Runs PHP coding standard checks",
+        "fix": "Runs PHP coding standard fixer",
         "test": "Runs PHP unit tests",
-		"analyse": "Runs PHPStan Static Analysis checks",
+        "analyse": "Runs PHPStan Static Analysis checks",
         "is-complete": "Checks that all custom Sniffs are accompanied by unit tests",
         "is-complete-strict": "Checks that all custom Sniffs are acommpanied by unit tests and documentation",
         "all-checks": "Runs the scripts 'lint', 'phpcs', 'is-complete', 'test', 'analyse' in that order",
@@ -65,13 +72,16 @@
         "phpcs": [
             "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs ."
         ],
+        "fix": [
+            "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf ."
+        ],
         "test": [
             "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php",
             "@php ./vendor/bin/phpunit --filter BigBiteDocs ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
         ],
-		"analyse": [
-			"./vendor/bin/phpstan"
-		],
+        "analyse": [
+            "./vendor/bin/phpstan"
+        ],
         "is-complete": [
             "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBite",
             "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./BigBiteDocs"
@@ -81,18 +91,18 @@
             "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./BigBiteDocs"
         ],
         "all-checks": [
-			"@lint",
-			"@phpcs",
-			"@is-complete",
-			"@test",
-			"@analyse"
-		],
+            "@lint",
+            "@phpcs",
+            "@is-complete",
+            "@test",
+            "@analyse"
+        ],
         "all-checks-strict": [
-			"@lint",
-			"@phpcs",
-			"@is-complete-strict",
-			"@test",
-			"@analyse"
-		]
+            "@lint",
+            "@phpcs",
+            "@is-complete-strict",
+            "@test",
+            "@analyse"
+        ]
     }
 }
