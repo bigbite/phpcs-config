@@ -37,9 +37,6 @@
   <exclude-pattern>*/wp-content/object-cache.php</exclude-pattern>
   <exclude-pattern>*/wp-includes/*</exclude-pattern>
   <exclude-pattern>xmlrpc.php</exclude-pattern>
-  <!-- Test directories. -->
-  <exclude-pattern>*/tests/*</exclude-pattern>
-  <exclude-pattern>*/cypress/*</exclude-pattern>
   <!-- Package directories. -->
   <exclude-pattern>*/node_modules/*</exclude-pattern>
   <exclude-pattern>*/vendor/*</exclude-pattern>
