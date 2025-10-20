@@ -76,8 +76,7 @@
             "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf ."
         ],
         "test": [
-            "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php",
-            "@php ./vendor/bin/phpunit --filter BigBiteDocs ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
+            "@php ./vendor/bin/phpunit --filter BigBite ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
         ],
         "analyse": [
             "./vendor/bin/phpstan"

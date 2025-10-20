@@ -29,16 +29,6 @@
   <rule ref="Squiz.Commenting.DocCommentAlignment" />
   <!-- Enforce explanatory comments for empty catch statements. -->
   <rule ref="Squiz.Commenting.EmptyCatchComment" />
-  <!-- Check function comments for conformity. -->
-  <rule ref="Squiz.Commenting.FunctionComment">
-    <!-- We prefer shorthand int/bool over integer/boolean. -->
-    <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName" />
-    <exclude name="Squiz.Commenting.FunctionComment.InvalidReturn" />
-    <!-- Be slightly less aggressive about DocBlock formatting. -->
-    <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
-    <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop" />
-    <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital" />
-  </rule>
   <!-- Enforce comments for @throws tags. -->
   <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
   <!-- Check inline comments for conformity. -->
