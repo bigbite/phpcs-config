@@ -52,4 +52,10 @@
     <!-- Disable assumption that the first comment in a file is a file comment. -->
     <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
   </rule>
+  <!-- Prefer generic over array style for type hints (e.g. array<int> over int[]). -->
+  <rule ref="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax" />
+  <!-- Prefer shorthand scalar type hints in docblocks. -->
+  <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
+  <!-- Check that type hints are nullable when default value is null. -->
+  <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
 </ruleset>

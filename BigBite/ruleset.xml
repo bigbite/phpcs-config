@@ -185,12 +185,6 @@
   <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators" />
   <!-- Prefer +=/-= over ++/\-\-. -->
   <rule ref="SlevomatCodingStandard.Operators.DisallowIncrementAndDecrementOperators" />
-  <!-- Prefer generic over array style for type hints (e.g. array<int> over int[]). -->
-  <rule ref="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax" />
-  <!-- Prefer shorthand scalar type hints in docblocks. -->
-  <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
-  <!-- Check that type hints are nullable when default value is null. -->
-  <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
   <!-- Disallow variable variables ($$foo). -->
   <rule ref="SlevomatCodingStandard.Variables.DisallowVariableVariable" />
   <!-- Disallow unused variables. -->
