@@ -32,11 +32,12 @@
     "authors": [
         {
             "name": "Paul Taylor",
-            "email": "paul@bigbite.net"
+            "email": "paul@bigbite.net",
+			"role": "Developer"
         },
         {
             "name": "Jay McPartland",
-            "email": "jay@bigbite.net"
+			"role": "Developer"
         }
     ],
     "archive": {

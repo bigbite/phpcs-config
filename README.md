@@ -48,3 +48,7 @@ Please run the following command prior to creating a PR, and ensure that there a
 
 If you're feeling especially nice, you can run this command instead:
 - `composer run all-checks-strict`
+
+## Contributors
+
+- @jaymcp - Original maintainer and developer.

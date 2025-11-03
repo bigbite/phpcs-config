@@ -3,7 +3,7 @@ name: Bug report
 about: File a bug report
 title: ''
 labels: bug
-assignees: jonmcp
+assignees: ampersarnie
 
 ---
 
